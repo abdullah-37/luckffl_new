@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:luck_ffle/app/views/my%20points%20view/my_points_view.dart';
+import 'package:luck_ffle/app/views/my%20tickets%20view/my_tickets_view.dart';
 import 'package:luck_ffle/app/views/profile%20view/my_info_screen.dart';
 import 'package:luck_ffle/app/views/profile%20view/settings/setting_screen.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -12,9 +13,7 @@ import 'package:luck_ffle/config/constants.dart';
 import '../ticket shop/ticket_shop_view.dart';
 import 'announcement_screen.dart';
 import 'faq_screen.dart';
-import 'my_points_screen.dart';
 import 'my_product_box_screen.dart';
-import 'my_tickets_screen.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -40,14 +39,16 @@ class ProfileView extends StatelessWidget {
 
               // User Profile Section
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>const MyInfoScreen());
+                onTap: () {
+                  Get.to(() => const MyInfoScreen());
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(Constants.defaultRadius),
+                    borderRadius: BorderRadius.circular(
+                      Constants.defaultRadius,
+                    ),
                   ),
                   child: Center(
                     child: Column(
@@ -87,10 +88,10 @@ class ProfileView extends StatelessWidget {
                     ),
                     SizedBox(height: 15.w),
 
-                    // Points Section 1
+                    // Tickets Section 1
                     GestureDetector(
-                      onTap: (){
-                        Get.to(()=> TicketScreen());
+                      onTap: () {
+                        Get.to(() => const MyTicketsView());
                       },
                       child: Row(
                         children: [
@@ -135,8 +136,8 @@ class ProfileView extends StatelessWidget {
 
                     // Points Section 2
                     GestureDetector(
-                      onTap: (){
-                        Get.to(()=> MyPointsScreenScreen());
+                      onTap: () {
+                        Get.to(() => const MyPointsView());
                       },
                       child: Row(
                         children: [
@@ -225,20 +226,20 @@ class ProfileView extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    _buildMenuItem('티켓샵',(){
-                      Get.to(()=>const TicketShopView());
+                    _buildMenuItem('티켓샵', () {
+                      Get.to(() => const TicketShopView());
                     }),
-                    _buildMenuItem('나의 상품함',(){
-                      Get.to(()=>const MyProductBoxScreen());
+                    _buildMenuItem('나의 상품함', () {
+                      Get.to(() => const MyProductBoxScreen());
                     }),
-                    _buildMenuItem('공지사항',(){
-                      Get.to(()=> AnnouncementScreen());
+                    _buildMenuItem('공지사항', () {
+                      Get.to(() => AnnouncementScreen());
                     }),
-                    _buildMenuItem('자주 묻는 질문',(){
-                      Get.to(()=> FAQScreen());
+                    _buildMenuItem('자주 묻는 질문', () {
+                      Get.to(() => FAQScreen());
                     }),
-                    _buildMenuItem('설정',(){
-                      Get.to(()=> const SettingsScreen());
+                    _buildMenuItem('설정', () {
+                      Get.to(() => const SettingsScreen());
                     }),
                   ],
                 ),
@@ -252,7 +253,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem(String title,void Function()? onTap) {
+  Widget _buildMenuItem(String title, void Function()? onTap) {
     return GestureDetector(
       onTap: onTap,
       child: Container(

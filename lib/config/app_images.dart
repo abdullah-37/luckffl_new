@@ -18,6 +18,17 @@ class AppImages {
   static const String finishguiding = "assets/images/finishguiding.png";
   static const String notifications = "assets/icons/notifications.svg";
   static const String point = "assets/icons/point.svg";
+  static const String tooltiproulette = "assets/images/tooltiproulette.png";
+  static const String tooltiplu = "assets/images/tooltiplu.png";
+
+  static const String ticketgrey = 'assets/icons/ticketgrey.svg';
+  static const String ticketbrown = 'assets/icons/ticketbrown.svg';
+  static const String ticketyellow = 'assets/icons/ticketyellow.svg';
+  static const String confetti = "assets/images/confetti and stars.png";
+  static const String roller = "assets/images/roller.png";
+  static const String spinwheel = "assets/images/spinwheel.png";
+  static const String partyingface = "assets/images/partying-face.png";
+  static const String timer = "assets/images/timer.png";
 }
 
 class AppIcons {

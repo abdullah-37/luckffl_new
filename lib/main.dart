@@ -4,7 +4,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
-import 'package:luck_ffle/app/views/bottom%20navigation/bottom_navigation.dart';
+import 'package:luck_ffle/app/localization/app_translations.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_036.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 
 void main() {
@@ -23,7 +24,10 @@ class MyApp extends StatelessWidget {
       // splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
-          home: const MainScreen(),
+          translations: AppTranslations(),
+          locale: const Locale('ko', 'KR'),
+          fallbackLocale: const Locale('en', 'US'),
+          home: const App036(),
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: AppColors.scaffoldcolour,

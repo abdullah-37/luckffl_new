@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_lucky_chance_view.dart';
+import 'package:luck_ffle/app/views/todays%20lucky%20chance/todays_lucky_chance_view.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
@@ -20,40 +23,62 @@ class TodaysLuckyChanceWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // title
-          Text('오늘의 럭키 찬스', style: AppTextStyles.bodytitleLarge),
+          Text('todays_lucky_chance'.tr, style: AppTextStyles.bodytitleLarge),
           SizedBox(height: 20.h),
           // row
-          Row(
-            spacing: 10,
-            children: [
-              //image
-              Image.asset(AppImages.leafhand, height: 70.h),
-              // column
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('오늘의 행운을 뽑아보세요!', style: AppTextStyles.bodytitlesmall),
-                  Text('티켓픽으로 상품뽑기 도전!', style: AppTextStyles.bodySubtitle),
-                ],
-              ),
-            ],
+          GestureDetector(
+            onTap: () {
+              Get.to(() => const TodaysLuckyChanceView());
+            },
+            child: Row(
+              spacing: 10,
+              children: [
+                //image
+                Image.asset(AppImages.leafhand, height: 70.h),
+                // column
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'pick_today_luck'.tr,
+                      style: AppTextStyles.bodytitlesmall,
+                    ),
+                    Text(
+                      'challenge_with_ticketpick'.tr,
+                      style: AppTextStyles.bodySubtitle,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 20.h),
 
-          Row(
-            spacing: 10,
-            children: [
-              //image
-              Image.asset(AppImages.colorwheel, height: 70.h),
-              // column
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('오늘의 행운을 뽑아보세요!', style: AppTextStyles.bodytitlesmall),
-                  Text('티켓픽으로 상품뽑기 도전!', style: AppTextStyles.bodySubtitle),
-                ],
-              ),
-            ],
+          GestureDetector(
+            onTap: () {
+              Get.to(() => const RouletteLuckyChanceView());
+            },
+            child: Row(
+              spacing: 10,
+              children: [
+                //image
+                Image.asset(AppImages.colorwheel, height: 70.h),
+                // column
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'pick_today_luck'.tr,
+                      style: AppTextStyles.bodytitlesmall,
+                    ),
+                    Text(
+                      'challenge_with_ticketpick'.tr,
+                      style: AppTextStyles.bodySubtitle,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),

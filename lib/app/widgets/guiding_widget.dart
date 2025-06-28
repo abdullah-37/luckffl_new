@@ -322,13 +322,23 @@ class GuidingWidget extends StatelessWidget {
             color: AppColors.scaffoldcolour,
             borderRadius: BorderRadius.circular(Constants.defaultRadius - 10),
           ),
-          child: const Material(
+          child: Material(
             child: Column(
               spacing: 10,
               children: [
-                FirstComeChallengeWidget(),
-                FirstComeChallengeWidget(),
-                FirstComeChallengeWidget(),
+                FirstComeChallengeWidget(
+                  image: AppImages.alarmclock,
+                  onTap: () {},
+                ),
+                FirstComeChallengeWidget(
+                  image: AppImages.challenge,
+                  onTap: () {},
+                ),
+
+                FirstComeChallengeWidget(
+                  image: AppImages.handpoint,
+                  onTap: () {},
+                ),
               ],
             ),
           ),

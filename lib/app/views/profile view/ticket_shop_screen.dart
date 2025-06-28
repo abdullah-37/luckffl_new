@@ -48,11 +48,11 @@ class TicketShopScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        leading:  GestureDetector(
-          onTap: (){
+        leading: GestureDetector(
+          onTap: () {
             Get.back();
           },
-          child: const Icon(Icons.arrow_back_ios,size: 18,),
+          child: const Icon(Icons.keyboard_arrow_left, size: 18),
         ),
       ),
       body: Column(
@@ -82,7 +82,10 @@ class TicketShopScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("상품", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              const Text(
+                "상품",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
               DropdownButton<String>(
                 value: "인기순",
                 items: const [
@@ -98,48 +101,62 @@ class TicketShopScreen extends StatelessWidget {
           const SizedBox(height: 12),
 
           // Package List
-          ...packages.map((pkg) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Row(
-              children: [
-                // Placeholder Image Box
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(8),
+          ...packages.map(
+            (pkg) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                children: [
+                  // Placeholder Image Box
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                // Info
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(pkg['price'], style: const TextStyle(fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          Text(pkg['main']),
-                          const SizedBox(width: 6),
-                          Text(pkg['bonus'], style: TextStyle(color: Colors.red)),
-                          if (pkg['silver'] != '') ...[
+                  const SizedBox(width: 12),
+                  // Info
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          pkg['price'],
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Text(pkg['main']),
                             const SizedBox(width: 6),
-                            Text(' + ${pkg['silver']}', style: TextStyle(color: Colors.grey.shade700)),
+                            Text(
+                              pkg['bonus'],
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            if (pkg['silver'] != '') ...[
+                              const SizedBox(width: 6),
+                              Text(
+                                ' + ${pkg['silver']}',
+                                style: TextStyle(color: Colors.grey.shade700),
+                              ),
+                            ],
+                            if (pkg['gold'] != '') ...[
+                              const SizedBox(width: 6),
+                              Text(
+                                ' + ${pkg['gold']}',
+                                style: TextStyle(color: Colors.grey.shade700),
+                              ),
+                            ],
                           ],
-                          if (pkg['gold'] != '') ...[
-                            const SizedBox(width: 6),
-                            Text(' + ${pkg['gold']}', style: TextStyle(color: Colors.grey.shade700)),
-                          ],
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          )),
+          ),
         ],
       ),
     );

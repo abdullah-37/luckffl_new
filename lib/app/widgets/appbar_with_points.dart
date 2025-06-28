@@ -21,7 +21,7 @@ class AppbarWithPoints extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.0),
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
           child: PointsWidget(),
         ),
         SizedBox(width: 10.w),

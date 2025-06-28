@@ -11,7 +11,12 @@ class App042 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('교환 완료'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('교환 완료'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
+
       body: Padding(
         padding: Constants.horizontalPadding,
         child: Column(

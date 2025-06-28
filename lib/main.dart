@@ -5,7 +5,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/localization/app_translations.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_036.dart';
+import 'package:luck_ffle/app/views/onboardings/splash_screen.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812), // Use your Figma design size here
+      designSize: const Size(375, 812),
       // minTextAdapt: true,
       // splitScreenMode: true,
       builder: (context, child) {
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           translations: AppTranslations(),
           locale: const Locale('ko', 'KR'),
           fallbackLocale: const Locale('en', 'US'),
-          home: const App036(),
+          home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: AppColors.scaffoldcolour,

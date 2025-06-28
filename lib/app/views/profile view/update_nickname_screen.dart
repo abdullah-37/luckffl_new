@@ -9,20 +9,25 @@ class NicknameChangeScreen extends StatefulWidget {
 }
 
 class _NicknameChangeScreenState extends State<NicknameChangeScreen> {
-  final TextEditingController _nicknameController = TextEditingController(text: "후라이드");
+  final TextEditingController _nicknameController = TextEditingController(
+    text: "후라이드",
+  );
   String validationMessage = "사용 가능한 닉네임 입니다.";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("닉네임 변경", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          "닉네임 변경",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
-        leading:  GestureDetector(
-          onTap: (){
+        leading: GestureDetector(
+          onTap: () {
             Get.back();
           },
-          child: const Icon(Icons.arrow_back_ios,size: 18,),
+          child: const Icon(Icons.keyboard_arrow_left, size: 18),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -45,7 +50,10 @@ class _NicknameChangeScreenState extends State<NicknameChangeScreen> {
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
             const SizedBox(height: 24),
-            const Text("닉네임", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            const Text(
+              "닉네임",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(height: 8),
             TextField(
               controller: _nicknameController,
@@ -54,13 +62,16 @@ class _NicknameChangeScreenState extends State<NicknameChangeScreen> {
                 fillColor: Colors.white,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade200)
+                  borderSide: BorderSide(color: Colors.grey.shade200),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade200)
+                  borderSide: BorderSide(color: Colors.grey.shade200),
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 14,
+                ),
               ),
             ),
             const SizedBox(height: 8),
@@ -91,7 +102,10 @@ class _NicknameChangeScreenState extends State<NicknameChangeScreen> {
                 onPressed: () {
                   // Handle nickname change
                 },
-                child: const Text("변경", style: TextStyle(fontWeight: FontWeight.bold)),
+                child: const Text(
+                  "변경",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             const SizedBox(height: 24),

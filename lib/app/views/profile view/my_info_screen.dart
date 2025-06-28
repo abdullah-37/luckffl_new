@@ -9,13 +9,16 @@ class MyInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:  GestureDetector(
-          onTap: (){
+        leading: GestureDetector(
+          onTap: () {
             Get.back();
           },
-          child: const Icon(Icons.arrow_back_ios,size: 18,),
+          child: const Icon(Icons.keyboard_arrow_left, size: 18),
         ),
-        title: const Text("내 정보", style: TextStyle(fontWeight: FontWeight.w500)),
+        title: const Text(
+          "내 정보",
+          style: TextStyle(fontWeight: FontWeight.w500),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -34,30 +37,38 @@ class MyInfoScreen extends StatelessWidget {
               // Section Header
               const ListTile(
                 leading: Icon(Icons.shield, color: Colors.grey),
-                title: Text("내 정보", style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text(
+                  "내 정보",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               const Divider(),
 
               // Name
-              _buildInfoRow((){},"이름", "홍길동"),
+              _buildInfoRow(() {}, "이름", "홍길동"),
               const Divider(),
 
               // Nickname
-              _buildInfoRow((){
-                Get.to(()=>const NicknameChangeScreen());
-              },"닉네임", "@1234567", showArrow: true),
+              _buildInfoRow(
+                () {
+                  Get.to(() => const NicknameChangeScreen());
+                },
+                "닉네임",
+                "@1234567",
+                showArrow: true,
+              ),
               const Divider(),
 
               // 가입 수단
-              _buildInfoRow((){},"가입 수단", "네이버 가입"),
+              _buildInfoRow(() {}, "가입 수단", "네이버 가입"),
               const Divider(),
 
               // Email
-              _buildInfoRow((){},"이메일", "qwer12@naver.com"),
+              _buildInfoRow(() {}, "이메일", "qwer12@naver.com"),
               const Divider(),
 
               // Phone number
-              _buildInfoRow((){},"휴대폰 번호", "010-1234-1234", showArrow: true),
+              _buildInfoRow(() {}, "휴대폰 번호", "010-1234-1234", showArrow: true),
             ],
           ),
         ),
@@ -65,18 +76,24 @@ class MyInfoScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoRow(void Function()? onTap ,String label,  String value, {bool showArrow = false}) {
+  Widget _buildInfoRow(
+    void Function()? onTap,
+    String label,
+    String value, {
+    bool showArrow = false,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
         child: Row(
           children: [
-            Expanded(
-                child: Text(label, style: const TextStyle(fontSize: 16))),
-            Text(value, style: const TextStyle(fontSize: 16, color: Colors.grey)),
-            if (showArrow)
-              const Icon(Icons.chevron_right, color: Colors.grey),
+            Expanded(child: Text(label, style: const TextStyle(fontSize: 16))),
+            Text(
+              value,
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+            if (showArrow) const Icon(Icons.chevron_right, color: Colors.grey),
           ],
         ),
       ),

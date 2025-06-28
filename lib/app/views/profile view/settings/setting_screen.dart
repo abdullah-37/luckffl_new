@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/views/profile%20view/settings/term_use_screen.dart';
+import 'package:luck_ffle/app/views/profile%20view/settings/withdraw_screen.dart';
 
-class SettingsScreen extends StatelessWidget {
+import 'contact_us_screen.dart';
+
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool first = true;
+  bool second = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:  GestureDetector(
-          onTap: (){
+        leading: GestureDetector(
+          onTap: () {
             Get.back();
           },
-          child: const Icon(Icons.arrow_back_ios,size: 18,),
+          child: const Icon(Icons.keyboard_arrow_left, size: 18),
         ),
         title: const Text('설정', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
-        elevation: 1,
+        elevation: 0,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
@@ -25,33 +38,215 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: [
           _buildCard([
-            _buildSwitchTile('럭플 활동 알림', false),
-            _buildSwitchTile('광고/마케팅 알림', true),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Center(child: Icon(Icons.notifications)),
+                ),
+                const SizedBox(width: 10),
+                const Text('알림 설정', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+            const SizedBox(height: 10),
+            _buildSwitchTile('럭플 활동 알림', first, (val) {
+              setState(() {
+                first = val;
+              });
+            }),
+            _buildSwitchTile('광고/마케팅 알림', second, (val) {
+              setState(() {
+                second = val;
+              });
+            }),
           ]),
           const SizedBox(height: 12),
           _buildCard([
-            _buildNavItem('이용약관'),
-            _buildNavItem('개인정보처리방침'),
-            _buildNavItem('전자금융거래 이용약관'),
-            _buildNavItem('마케팅 수신 동의'),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Center(child: Icon(Icons.shield)),
+                ),
+                const SizedBox(width: 10),
+                const Text('약관 및 정책', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+            const SizedBox(height: 10),
+            _buildNavItem(() {
+              Get.to(() => TermUseScreen());
+            }, '이용약관'),
+            _buildNavItem(() {}, '개인정보처리방침'),
+            _buildNavItem(() {}, '전자금융거래 이용약관'),
+            _buildNavItem(() {}, '마케팅 수신 동의'),
           ]),
           const SizedBox(height: 12),
           _buildCard([
-            _buildNavItem('문의하기', icon: Icons.headphones),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Center(child: Icon(Icons.headphones)),
+                ),
+                const SizedBox(width: 10),
+                const Text('고객센터', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+            const SizedBox(height: 10),
+            _buildNavItem(() {
+              Get.to(() => ContactUsScreen());
+            }, '문의하기'),
           ]),
           const SizedBox(height: 12),
           _buildCard([
-            ListTile(
-              leading: const Icon(Icons.settings, color: Colors.grey),
-              title: const Text('앱 버전 1.5.17'),
-              subtitle: const Text('최신 버전입니다.', style: TextStyle(fontSize: 12)),
-              onTap: () {},
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Center(child: Icon(Icons.settings)),
+                ),
+                const SizedBox(width: 10),
+                const Text('앱 정보', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+            const SizedBox(height: 25),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text('앱 버전', style: TextStyle(fontSize: 16)),
+                    SizedBox(width: 10),
+                    Text(
+                      '1.5.17',
+                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                    ),
+                  ],
+                ),
+                Text(
+                  '최신 버전입니다.',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ],
             ),
           ]),
           const SizedBox(height: 12),
-          _buildButton('로그아웃', onPressed: () {}),
-          const SizedBox(height: 8),
-          _buildButton('탈퇴하기', onPressed: () {}, isDestructive: true),
+          _buildButton(
+            '로그아웃',
+            onPressed: () {
+              showDialog(
+                context: context,
+                barrierDismissible: true,
+                builder: (BuildContext context) {
+                  return Dialog(
+                    backgroundColor: Colors.transparent,
+                    child: Container(
+                      width: 320.w,
+                      padding: EdgeInsets.all(30.w),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Image or other widgets can go here
+                          const Text(
+                            '로그아웃 하시겠습니까?',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: 40.h,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.grey.shade100,
+                                      foregroundColor: Colors.black,
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      '취소',
+                                      style: TextStyle(fontSize: 14.sp),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: 40.h,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xffFFD700),
+                                      foregroundColor: Colors.black,
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      '로그아웃',
+                                      style: TextStyle(fontSize: 14.sp),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+          const SizedBox(height: 20),
+          GestureDetector(
+            onTap: () {
+              Get.to(() => const WithdrawScreen());
+            },
+            child: const Center(
+              child: Text(
+                '탈퇴하기',
+                style: TextStyle(fontSize: 13, color: Colors.grey),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
         ],
       ),
     );
@@ -59,49 +254,56 @@ class SettingsScreen extends StatelessWidget {
 
   Widget _buildCard(List<Widget> children) {
     return Container(
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Column(
-        children: children,
-      ),
+      child: Column(children: children),
     );
   }
 
-  Widget _buildSwitchTile(String title, bool value) {
+  Widget _buildSwitchTile(
+    String title,
+    bool value,
+    ValueChanged<bool> onChanged,
+  ) {
     return SwitchListTile(
+      contentPadding: EdgeInsets.zero,
       title: Text(title),
       value: value,
-      onChanged: (_) {},
-      activeColor: Colors.yellow[700],
+      onChanged: onChanged,
+      activeColor: Colors.white,
+      inactiveThumbColor: Colors.white,
+      activeTrackColor: Colors.yellow,
+      inactiveTrackColor: Colors.grey.shade200,
     );
   }
 
-  Widget _buildNavItem(String title, {IconData? icon}) {
+  Widget _buildNavItem(void Function()? onTap, String title, {IconData? icon}) {
     return ListTile(
+      contentPadding: EdgeInsets.zero,
       leading: icon != null ? Icon(icon, color: Colors.grey) : null,
-      title: Text(title),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: () {},
+      title: Text(title, style: const TextStyle(fontSize: 16)),
+      trailing: const Icon(Icons.arrow_forward_ios_sharp, size: 20),
+      onTap: onTap,
     );
   }
 
-  Widget _buildButton(String text, {VoidCallback? onPressed, bool isDestructive = false}) {
+  Widget _buildButton(String text, {VoidCallback? onPressed}) {
     return SizedBox(
       width: double.infinity,
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-          foregroundColor: isDestructive ? Colors.red : Colors.black,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
           backgroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 16),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(fontSize: 16),
-        ),
+        child: Text(text, style: const TextStyle(fontSize: 16)),
       ),
     );
   }

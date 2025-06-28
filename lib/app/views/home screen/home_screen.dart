@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/instance_manager.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_036.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/attendance_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/challenge_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/couresel_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/newly_opened_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/popular_lucky_top_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/todays_lucky_chance_widget.dart';
+import 'package:luck_ffle/app/views/lucky%20zone%20detals%20view/end_application_details.dart';
 import 'package:luck_ffle/app/views/lucky%20zone%20detals%20view/in_progress_lucky_zone_details.dart';
 import 'package:luck_ffle/app/views/my%20points%20view/my_points_view.dart';
 import 'package:luck_ffle/app/views/my%20tickets%20view/my_tickets_view.dart';
@@ -141,9 +143,14 @@ class HomeScreen extends StatelessWidget {
               child: TodaysLuckyChanceWidget(),
             ),
             SizedBox(height: 20.h),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: FirstComeChallengeWidget(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: FirstComeChallengeWidget(
+                image: AppImages.challenge,
+                onTap: () {
+                  Get.to(() => const App036());
+                },
+              ),
             ),
             SizedBox(height: 20.h),
 
@@ -193,6 +200,7 @@ class HomeScreen extends StatelessWidget {
 
             // Product List
             _buildProductCard(
+              isActive: true,
               index: 0,
               backgroundColor: const Color(0xFFB5B5B5),
               imageUrl:
@@ -202,6 +210,7 @@ class HomeScreen extends StatelessWidget {
             ),
 
             _buildProductCard(
+              isActive: false,
               index: 1,
               backgroundColor: const Color(0xFFfff9de),
               imageUrl:
@@ -211,6 +220,8 @@ class HomeScreen extends StatelessWidget {
             ),
 
             _buildProductCard(
+              isActive: true,
+
               index: 2,
               backgroundColor: const Color(0xFFfff9de),
               imageUrl:
@@ -232,10 +243,12 @@ class HomeScreen extends StatelessWidget {
     required String imageUrl,
     required String title,
     required String subtitle,
+    required bool isActive,
   }) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => const LuckyDetailView());
+        if (isActive) Get.to(() => const LuckyDetailView());
+        if (!isActive) Get.to(() => const EndApplicationDetails());
       },
       child: Container(
         clipBehavior: Clip.hardEdge,

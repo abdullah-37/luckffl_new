@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class MyProductBoxScreen extends StatelessWidget {
   const MyProductBoxScreen({super.key});
 
@@ -10,11 +8,11 @@ class MyProductBoxScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:  GestureDetector(
-          onTap: (){
+        leading: GestureDetector(
+          onTap: () {
             Get.back();
           },
-          child: const Icon(Icons.arrow_back_ios,size: 18,),
+          child: const Icon(Icons.keyboard_arrow_left, size: 18),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -34,20 +32,14 @@ class MyProductBoxScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(height: 10),
           // Tabs
           const Row(
             spacing: 20,
-            children: [
-              Text('전체'),
-              Text('적립'),
-              Text('사용'),
-            ],
+            children: [Text('전체'), Text('적립'), Text('사용')],
           ),
-          const SizedBox(height: 10,),
-          Expanded(
-            child: buildItemsGrid(context),
-          ),
+          const SizedBox(height: 10),
+          Expanded(child: buildItemsGrid(context)),
         ],
       ),
     );
@@ -63,7 +55,8 @@ class MyProductBoxScreen extends StatelessWidget {
       children: [
         buildItemCard(
           context,
-          imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfL3mCN-vuTqFql02jPL7_Exav8FeRVPIaUZeFw85IT-HxPfuorATyYevWh-H7sBM4dJU&usqp=CAU',
+          imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfL3mCN-vuTqFql02jPL7_Exav8FeRVPIaUZeFw85IT-HxPfuorATyYevWh-H7sBM4dJU&usqp=CAU',
           brand: '이디야커피',
           title: '초콜릿 ICED (R)',
           date: '2025.04.01 교환',
@@ -71,7 +64,8 @@ class MyProductBoxScreen extends StatelessWidget {
         ),
         buildItemCard(
           context,
-          imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfL3mCN-vuTqFql02jPL7_Exav8FeRVPIaUZeFw85IT-HxPfuorATyYevWh-H7sBM4dJU&usqp=CAU',
+          imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfL3mCN-vuTqFql02jPL7_Exav8FeRVPIaUZeFw85IT-HxPfuorATyYevWh-H7sBM4dJU&usqp=CAU',
           brand: '투썸플레이스',
           title: '제철 맛온 딸기 라떼 R',
           date: '2025.04.01 당첨',
@@ -81,12 +75,14 @@ class MyProductBoxScreen extends StatelessWidget {
     );
   }
 
-  Widget buildItemCard(BuildContext context,
-      {required String imageUrl,
-        required String brand,
-        required String title,
-        required String date,
-        required bool isUsed}) {
+  Widget buildItemCard(
+    BuildContext context, {
+    required String imageUrl,
+    required String brand,
+    required String title,
+    required String date,
+    required bool isUsed,
+  }) {
     return Stack(
       children: [
         Column(
@@ -105,16 +101,19 @@ class MyProductBoxScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Chip(
-                  label: Text(brand,
-                      style: const TextStyle(fontSize: 12)),
+                  label: Text(brand, style: const TextStyle(fontSize: 12)),
                   backgroundColor: const Color(0xffFFF6C9),
                   padding: const EdgeInsets.symmetric(horizontal: 4),
                   side: BorderSide.none,
                 ),
                 const SizedBox(height: 4),
-                Text(title,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 14)),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
                 const SizedBox(height: 4),
                 Text(date, style: const TextStyle(fontSize: 12)),
               ],

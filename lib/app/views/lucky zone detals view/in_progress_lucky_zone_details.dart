@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:luck_ffle/app/widgets/app_18_botom_sheat_widget.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
+import 'package:luck_ffle/app/widgets/share_bottom_sheat.dart';
+import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
@@ -19,7 +22,14 @@ class LuckyDetailView extends StatelessWidget {
           children: [
             Expanded(
               child: CustomElevatedButton(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet(
+                    backgroundColor: AppColors.scaffoldcolour,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) => const ShareBottomSheet(),
+                  );
+                },
                 title: '공유하기',
                 color: const Color(0xFFffdbdb),
                 textColor: const Color(0xFFff2e2e),
@@ -27,9 +37,17 @@ class LuckyDetailView extends StatelessWidget {
             ),
             Expanded(
               child: CustomElevatedButton(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet(
+                    backgroundColor: AppColors.scaffoldcolour,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) => const App18BotomSheatWidget(),
+                  );
+                },
                 title: '응모하기',
                 color: const Color(0xFFff2e2e),
+
                 textColor: Colors.white,
               ),
             ),

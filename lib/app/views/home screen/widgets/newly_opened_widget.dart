@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/instance_manager.dart';
+import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/views/home%20screen/home_screen.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -21,6 +23,7 @@ class _PopularLuckyTopWidgetState extends State<NewlyOpenedWidget> {
   }
 
   Widget _buildPopularLucky() {
+    BottomNavController navController = Get.find<BottomNavController>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Container(
@@ -62,7 +65,9 @@ class _PopularLuckyTopWidgetState extends State<NewlyOpenedWidget> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               child: CustomElevatedButton(
-                onTap: () {},
+                onTap: () {
+                  navController.currentIndex.value = 1;
+                },
                 title: '최신 럭플 더보기',
                 color: const Color(0xFFfff6c9),
               ),

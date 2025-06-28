@@ -12,11 +12,11 @@ class AnnouncementDetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
-        leading:  GestureDetector(
-          onTap: (){
+        leading: GestureDetector(
+          onTap: () {
             Get.back();
           },
-          child: const Icon(Icons.arrow_back_ios,size: 18,),
+          child: const Icon(Icons.keyboard_arrow_left, size: 18),
         ),
       ),
       backgroundColor: Colors.white,
@@ -29,9 +29,10 @@ class AnnouncementDetailScreen extends StatelessWidget {
               const Text(
                 "[업데이트] 포인트샵 신규 상품 추가 안내",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    height: 1.4),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  height: 1.4,
+                ),
               ),
               const SizedBox(height: 8),
               const Text(
@@ -49,8 +50,7 @@ class AnnouncementDetailScreen extends StatelessWidget {
                   Text("🎁 ", style: TextStyle(fontSize: 18)),
                   Text(
                     "추가된 신규 상품 목록",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                 ],
               ),
@@ -65,8 +65,7 @@ class AnnouncementDetailScreen extends StatelessWidget {
                   Text("📅 ", style: TextStyle(fontSize: 18)),
                   Text(
                     "적용 일정",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                 ],
               ),
@@ -94,9 +93,7 @@ class AnnouncementDetailScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text("• ", style: TextStyle(fontSize: 14)),
-          Expanded(
-            child: Text(text, style: const TextStyle(fontSize: 14)),
-          ),
+          Expanded(child: Text(text, style: const TextStyle(fontSize: 14))),
         ],
       ),
     );

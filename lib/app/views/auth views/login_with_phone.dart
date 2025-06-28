@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/views/auth%20views/phone_otp_screen.dart';
+import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
@@ -21,7 +23,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
             onPressed: () {
               Get.back(canPop: true);
             },
-            icon: const Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.keyboard_arrow_left),
           ),
         ),
         body: Padding(
@@ -53,26 +55,11 @@ class _PhoneScreenState extends State<PhoneScreen> {
                   ),
                 ],
               ),
-              SizedBox(
-                width: 342.w,
-                height: 50.h,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor: const WidgetStatePropertyAll(
-                      AppColors.phoneButtonColor,
-                    ),
-                    shape: WidgetStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                  child: const Text(
-                    '인증번호 요청',
-                    style: TextStyle(color: AppColors.whiteColor),
-                  ),
-                ),
+              CustomElevatedButton(
+                onTap: () {
+                  Get.to(() => const PhoneOtpScreen());
+                },
+                title: '인증번호 요청',
               ),
             ],
           ),

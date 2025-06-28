@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_023.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_033.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_035.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_036.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/challenge_widget.dart';
+import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_lucky_chance_view.dart';
+import 'package:luck_ffle/app/views/todays%20lucky%20chance/todays_lucky_chance_view.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
+import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -42,13 +50,49 @@ class _RewardsViewState extends State<RewardsView> {
             SizedBox(height: 10.h),
             Text('오늘의 럭키 찬스', style: AppTextStyles.bodytitleLarge),
             Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.all(0),
-                itemCount: 7,
-                itemBuilder: (context, index) => const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5.0),
-                  child: FirstComeChallengeWidget(),
-                ),
+              child: ListView(
+                children: [
+                  FirstComeChallengeWidget(
+                    image: AppImages.threeone,
+                    onTap: () {
+                      Get.to(() => const App023());
+                    },
+                  ),
+                  FirstComeChallengeWidget(
+                    image: AppImages.alarmclock,
+                    onTap: () {
+                      Get.to(() => const App033());
+                    },
+                  ),
+                  FirstComeChallengeWidget(
+                    image: AppImages.leafhand,
+                    onTap: () {
+                      Get.to(() => const TodaysLuckyChanceView());
+                    },
+                  ),
+                  FirstComeChallengeWidget(
+                    image: AppImages.colorwheel,
+                    onTap: () {
+                      Get.to(() => const RouletteLuckyChanceView());
+                    },
+                  ),
+                  FirstComeChallengeWidget(
+                    image: AppImages.handshock,
+                    onTap: () {},
+                  ),
+                  FirstComeChallengeWidget(
+                    image: AppImages.handpoint,
+                    onTap: () {
+                      Get.to(() => const App035());
+                    },
+                  ),
+                  FirstComeChallengeWidget(
+                    image: AppImages.challenge,
+                    onTap: () {
+                      Get.to(() => const App036());
+                    },
+                  ),
+                ],
               ),
             ),
           ],

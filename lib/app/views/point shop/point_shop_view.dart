@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/views/point%20shop/app_38.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -103,39 +105,44 @@ class CategoryItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 60.w,
-          height: 60.w,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            shape: BoxShape.circle,
-          ),
-          child: ClipOval(
-            child: Image.network(
-              "https://picsum.photos/400/300?random=$index",
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[200],
-                  child: Icon(
-                    Icons.image,
-                    color: Colors.grey[400],
-                    size: 30.sp,
-                  ),
-                );
-              },
+    return GestureDetector(
+      onTap: () {
+        Get.to(() => const App38());
+      },
+      child: Column(
+        children: [
+          Container(
+            width: 60.w,
+            height: 60.w,
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              shape: BoxShape.circle,
+            ),
+            child: ClipOval(
+              child: Image.network(
+                "https://picsum.photos/400/300?random=$index",
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey[200],
+                    child: Icon(
+                      Icons.image,
+                      color: Colors.grey[400],
+                      size: 30.sp,
+                    ),
+                  );
+                },
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 8.h),
-        Text(
-          category.title,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 12.sp, color: Colors.black87),
-        ),
-      ],
+          SizedBox(height: 8.h),
+          Text(
+            category.title,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 12.sp, color: Colors.black87),
+          ),
+        ],
+      ),
     );
   }
 }

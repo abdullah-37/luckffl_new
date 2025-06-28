@@ -63,7 +63,7 @@ class _App035State extends State<App035> {
                           borderRadius: BorderRadius.circular(1000),
                         ),
                         padding: EdgeInsets.symmetric(
-                          horizontal: 30.w,
+                          horizontal: 20.w,
                           vertical: 13.h,
                         ),
                         child: Text('클릭', style: AppTextStyles.bodyText),
@@ -81,6 +81,57 @@ class _App035State extends State<App035> {
                 ],
               ),
             ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) => SizedBox(
+                  height: 80.h,
+                  child: Row(
+                    children: [
+                      // image
+                      const CircleAvatar(backgroundColor: Colors.black),
+                      SizedBox(width: 10.w),
+
+                      // text column
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('쿠팡', style: AppTextStyles.bodySubtitle),
+                          Text(
+                            '쿠팡클릭하고 포인트 받기',
+                            style: AppTextStyles.bodytitlesmall,
+                          ),
+                        ],
+                      ),
+
+                      const Spacer(),
+
+                      // Wrap the button + tooltip in a Stack
+
+                      // 1) The rounded “클릭” button
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFfff6c9),
+                          borderRadius: BorderRadius.circular(1000),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.w,
+                          vertical: 13.h,
+                        ),
+                        child: Text('클릭', style: AppTextStyles.bodyText),
+                      ),
+
+                      // 2) The tooltip image, positioned relative to the button
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            ///
+
+            //
           ],
         ),
       ),

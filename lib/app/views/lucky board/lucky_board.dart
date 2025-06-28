@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/route_manager.dart';
-import 'package:luck_ffle/app/views/home%20screen/home_screen.dart';
 import 'package:luck_ffle/app/views/lucky%20board/Campaigns/exposure_compain_details.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -59,9 +58,9 @@ class LuckyBoardView extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    _buildProductList(tab: '진행중'),
-                    _buildProductList(tab: '진행예정'),
-                    _buildProductList(tab: '종료'),
+                    _buildProductList(tab: '진행중', isNotiIcon: false),
+                    _buildProductList(tab: '진행예정', isNotiIcon: true),
+                    _buildProductList(tab: '종료', isNotiIcon: false),
                   ],
                 ),
               ),
@@ -72,11 +71,12 @@ class LuckyBoardView extends StatelessWidget {
     );
   }
 
-  Widget _buildProductList({required String tab}) {
+  Widget _buildProductList({required String tab, required bool isNotiIcon}) {
     return ListView(
       padding: const EdgeInsets.all(0),
       children: [
         _buildProductCard(
+          isNotificationicon: isNotiIcon,
           index: 0,
           backgroundColor: const Color(0xFFe8eaff),
           imageUrl:
@@ -86,6 +86,8 @@ class LuckyBoardView extends StatelessWidget {
         ),
 
         _buildProductCard(
+          isNotificationicon: isNotiIcon,
+
           index: 1,
           backgroundColor: const Color(0xFFfde9f5),
           imageUrl:
@@ -103,6 +105,7 @@ class LuckyBoardView extends StatelessWidget {
     required String imageUrl,
     required String title,
     required String subtitle,
+    bool isNotificationicon = false,
   }) {
     return GestureDetector(
       onTap: () {
@@ -140,11 +143,23 @@ class LuckyBoardView extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  // Background pattern (optional dots)
-                  if (backgroundColor == const Color(0xFFFFF9C4))
-                    Positioned.fill(
-                      child: CustomPaint(painter: DotPatternPainter()),
+                  if (isNotificationicon)
+                    Positioned(
+                      right: 10,
+                      top: 10,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        child: SvgPicture.asset(
+                          AppImages.notibell,
+                          height: 20.h,
+                        ),
+                      ),
                     ),
+                  // Background pattern (optional dots)
+                  // if (backgroundColor == const Color(0xFFFFF9C4))
+                  //   Positioned.fill(
+                  //     child: CustomPaint(painter: DotPatternPainter()),
+                  //   ),
 
                   // NEW badge
                   Positioned(

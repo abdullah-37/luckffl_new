@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:luck_ffle/app/views/point%20shop/app_38.dart';
+import 'package:luck_ffle/app/views/point%20shop/product_details.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -209,89 +210,94 @@ class PopularItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 130.w,
-      margin: EdgeInsets.only(right: 15.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 120.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.r),
-              color: Colors.grey[200],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12.r),
-              child: Image.network(
-                imageUrl,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: Colors.grey[200],
-                    child: Icon(
-                      Icons.image,
-                      color: Colors.grey[400],
-                      size: 40.sp,
-                    ),
-                  );
-                },
+    return GestureDetector(
+      onTap: () {
+        Get.to(() => const ProductDetails());
+      },
+      child: Container(
+        width: 130.w,
+        margin: EdgeInsets.only(right: 15.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 120.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.r),
+                color: Colors.grey[200],
               ),
-            ),
-          ),
-          SizedBox(height: 8.h),
-          Container(
-            decoration: BoxDecoration(
-              color: const Color(0xFFfff6c9),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(3.0),
-              child: Text(
-                category,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.r),
+                child: Image.network(
+                  imageUrl,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey[200],
+                      child: Icon(
+                        Icons.image,
+                        color: Colors.grey[400],
+                        size: 40.sp,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 4.h),
-          Text(
-            title,
-            style: AppTextStyles.bodyText,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          SizedBox(height: 8.h),
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 10,
-                backgroundColor: AppColors.primaryColor,
+            SizedBox(height: 8.h),
+            Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFFfff6c9),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
                 child: Text(
-                  'P',
+                  category,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 12.sp,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-              SizedBox(width: 4.w),
-              Text(
-                points,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+            ),
+            SizedBox(height: 4.h),
+            Text(
+              title,
+              style: AppTextStyles.bodyText,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 8.h),
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 10,
+                  backgroundColor: AppColors.primaryColor,
+                  child: Text(
+                    'P',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                SizedBox(width: 4.w),
+                Text(
+                  points,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

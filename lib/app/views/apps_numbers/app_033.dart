@@ -78,7 +78,7 @@ class App033 extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: true,
                           onChanged: (v) {},
                           activeTrackColor: AppColors.primaryColor,

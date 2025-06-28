@@ -42,6 +42,7 @@ class AppImages {
   static const String handshock = "assets/images/handshock.png";
 
   static const String valleyImage = "assets/images/valley.png";
+  static const String notibell = 'assets/icons/notibell.svg';
 }
 
 class AppIcons {

@@ -44,6 +44,7 @@ class AppImages {
   static const String valleyImage = "assets/images/valley.png";
   static const String app023tooltip = "assets/images/app023tooltip.png";
   static const String lockicon = "assets/images/lockicon.png";
+  static const String bell = "assets/images/yellow plastic bell.png";
 
   static const String notibell = 'assets/icons/notibell.svg';
 }

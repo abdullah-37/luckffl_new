@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
 class ContactUsMsgScreen extends StatefulWidget {
@@ -292,7 +293,48 @@ class _ContactUsMsgScreenState extends State<ContactUsMsgScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Colors.white,
+                      content: Column(
+                        spacing: 20,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '등록하시겠습니까?',
+                            style: AppTextStyles.bodytitleLarge,
+                          ),
+                          Text(
+                            textAlign: TextAlign.center,
+                            '문의량이 많을 시 답변이 지연될 수 있습니다.\n가능한 빨리 답변드릴 수 있도록 노력하겠습니다.',
+                            style: AppTextStyles.bodySubtitle,
+                          ),
+                          //
+                          Row(
+                            spacing: 10,
+                            children: [
+                              Expanded(
+                                child: CustomElevatedButton(
+                                  onTap: () {},
+                                  title: '취소',
+                                  color: const Color(0xFFf4f4f5),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomElevatedButton(
+                                  onTap: () {},
+                                  title: '취소',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
                 child: const Text(
                   '등록',
                   style: TextStyle(color: Colors.white, fontSize: 15),

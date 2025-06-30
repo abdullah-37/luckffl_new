@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:luck_ffle/app/widgets/points_widget.dart';
+import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -18,11 +18,7 @@ class _ExposureCompainDetailsState extends State<ExposureCompainDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
-        leading: const Icon(Icons.arrow_back_ios, size: 20),
-        actions: const [PointsWidget()],
-      ),
+      appBar: const AppbarWithPoints(),
       body: SingleChildScrollView(
         child: Column(
           children: [

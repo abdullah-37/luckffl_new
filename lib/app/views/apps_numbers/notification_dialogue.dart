@@ -1,161 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/auth%20views/login_with_phone.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
+import 'package:luck_ffle/config/app_text_styles.dart';
 
-class LoginBottomsheet extends StatefulWidget {
-  const LoginBottomsheet({super.key});
+class NotificationDialogue extends StatelessWidget {
+  const NotificationDialogue({super.key});
 
-  @override
-  State<LoginBottomsheet> createState() => _LoginBottomsheetState();
-}
-
-class _LoginBottomsheetState extends State<LoginBottomsheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      height: 370.h,
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+      height: 610.h,
       width: double.maxFinite,
       decoration: const BoxDecoration(
-        color: AppColors.whiteColor,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topRight: Radius.circular(16),
+          topLeft: Radius.circular(16),
         ),
       ),
-
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
             child: Container(
               height: 5,
-              width: 38,
+              width: 48,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: AppColors.checkTextColor,
               ),
             ),
           ),
-          SizedBox(height: 15.h),
-          SizedBox(
-            width: 320.w,
-            height: 28.h,
-            child: Text(
-              '다른 방법으로 로그인',
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20.sp),
+          SizedBox(height: 20.h),
+          Image.asset(AppImages.bell, height: 80.h),
+          SizedBox(height: 20.h),
+          Text('출석을 놓치지 않게 알려드릴게요!', style: AppTextStyles.bodyTitleExtraLarge),
+          SizedBox(height: 20.h),
+          Text(
+            '매일 출석하고 티켓, 포인트 혜택을 챙기세요.',
+            style: AppTextStyles.detailsSubTitle.copyWith(
+              color: AppColors.textColor,
+            ),
+          ),
+          SizedBox(height: 5.h),
+          Text(
+            '중요한 이벤트 소식도 빠르게 받아볼 수 있어요!',
+            style: AppTextStyles.detailsSubTitle.copyWith(
+              color: AppColors.textColor,
+            ),
+          ),
+          SizedBox(height: 20.h),
+          Text(
+            '🗓️ 출석체크 알림 – 출석 놓치지 않기!',
+            style: AppTextStyles.detailsText.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(height: 8.h),
+          Text(
+            '🎯 미션/이벤트 시작 알림 – 새로운 기회를 가장 먼저!',
+            style: AppTextStyles.detailsText.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(height: 8.h),
+          Text(
+            '🎁 리워드 지급 알림 – 당첨 소식을 바로 받아보기!',
+            style: AppTextStyles.detailsText.copyWith(
+              fontWeight: FontWeight.w500,
             ),
           ),
           SizedBox(height: 30.h),
-          Container(
-            height: 50.h,
-            width: 320.w,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: AppColors.textColor,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(AppIcons.appleIcon),
-                Text(
-                  '다른 방법으로 시작하기',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
-                    color: AppColors.whiteColor,
-                  ),
-                ),
-                const SizedBox(),
-              ],
-            ),
-          ),
-          SizedBox(height: 15.h),
-          Container(
-            height: 50.h,
-            width: 320.w,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: AppColors.whiteColor,
-              border: const Border.fromBorderSide(
-                BorderSide(width: 1, color: AppColors.borderColor),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              height: 48.h,
+              width: 327.w,
+              decoration: BoxDecoration(
+                color: AppColors.sliderColor,
+                borderRadius: BorderRadius.circular(48),
               ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(AppIcons.googleIcon, height: 22),
-
-                Text(
-                  '구글로 시작하기',
+              child: Center(
+                child: Text(
+                  '네, 좋아요',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
+                    fontSize: 16.sp,
                     color: AppColors.textColor,
                   ),
                 ),
-                const SizedBox(),
-              ],
-            ),
-          ),
-          SizedBox(height: 15.h),
-          Container(
-            height: 50.h,
-            width: 320.w,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: AppColors.neverButtonColor,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(AppIcons.neverIcon),
-
-                Text(
-                  '네이버로 시작하기',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
-                    color: AppColors.whiteColor,
-                  ),
-                ),
-                const SizedBox(),
-              ],
-            ),
-          ),
-          SizedBox(height: 15.h),
-          GestureDetector(
-            onTap: () {
-              Get.to(() => const PhoneScreen());
-            },
-            child: Container(
-              height: 50.h,
-              width: 320.w,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppColors.sliderColor,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SvgPicture.asset(AppIcons.phoneIcon),
-
-                  Text(
-                    '전화번호로 시작하기',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15.sp,
-                    ),
-                  ),
-                  const SizedBox(),
-                ],
+            ),
+          ),
+          SizedBox(height: 10.h),
+          Center(
+            child: Text(
+              '괜찮아요',
+              style: AppTextStyles.appDownloadButtonText.copyWith(
+                color: AppColors.textColor,
               ),
             ),
           ),

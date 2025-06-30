@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/route_manager.dart';
+import 'package:luck_ffle/app/views/point%20shop/app_042.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -67,7 +69,9 @@ class _ProductPurchaseDialogueState extends State<ProductPurchaseDialogue> {
                 ),
                 Expanded(
                   child: CustomElevatedButton(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const App042());
+                    },
                     title: '네',
                     color: const Color(0xFFffd700),
                   ),

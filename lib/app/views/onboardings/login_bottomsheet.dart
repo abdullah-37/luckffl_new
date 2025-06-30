@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 import 'package:luck_ffle/app/views/auth%20views/login_with_phone.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 
-class LoginBottomsheet extends StatefulWidget {
+class LoginBottomsheet extends StatelessWidget {
   const LoginBottomsheet({super.key});
 
   @override
-  State<LoginBottomsheet> createState() => _LoginBottomsheetState();
-}
-
-class _LoginBottomsheetState extends State<LoginBottomsheet> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       height: 370.h,
       width: double.maxFinite,
       decoration: const BoxDecoration(
@@ -31,6 +25,17 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
 
       child: Column(
         children: [
+          Center(
+            child: Container(
+              height: 5,
+              width: 38,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: AppColors.checkTextColor,
+              ),
+            ),
+          ),
+          SizedBox(height: 15.h),
           SizedBox(
             width: 320.w,
             height: 28.h,
@@ -49,9 +54,9 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
               color: AppColors.textColor,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(AppIcons.appleIcon),
-                SizedBox(width: 45.w),
                 Text(
                   '다른 방법으로 시작하기',
                   style: TextStyle(
@@ -60,6 +65,7 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
                     color: AppColors.whiteColor,
                   ),
                 ),
+                const SizedBox(),
               ],
             ),
           ),
@@ -76,9 +82,10 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
               ),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(AppIcons.googleIcon, height: 22),
-                SizedBox(width: 50.w),
+
                 Text(
                   '구글로 시작하기',
                   style: TextStyle(
@@ -87,6 +94,7 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
                     color: AppColors.textColor,
                   ),
                 ),
+                const SizedBox(),
               ],
             ),
           ),
@@ -100,9 +108,10 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
               color: AppColors.neverButtonColor,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(AppIcons.neverIcon),
-                SizedBox(width: 55.w),
+
                 Text(
                   '네이버로 시작하기',
                   style: TextStyle(
@@ -111,13 +120,13 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
                     color: AppColors.whiteColor,
                   ),
                 ),
+                const SizedBox(),
               ],
             ),
           ),
           SizedBox(height: 15.h),
           GestureDetector(
             onTap: () {
-              Get.back();
               Get.to(() => const PhoneScreen());
             },
             child: Container(
@@ -129,17 +138,19 @@ class _LoginBottomsheetState extends State<LoginBottomsheet> {
                 color: AppColors.sliderColor,
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SvgPicture.asset(AppIcons.phoneIcon),
-                  SizedBox(width: 55.w),
+
                   Text(
                     '전화번호로 시작하기',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 15.sp,
-                      color: AppColors.whiteColor,
+                      color: Colors.black,
                     ),
                   ),
+                  const SizedBox(),
                 ],
               ),
             ),

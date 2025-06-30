@@ -5,9 +5,9 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/views/apps_numbers/notification_dialogue.dart';
 import 'package:luck_ffle/app/views/home%20screen/home_screen.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/challenge_widget.dart';
-import 'package:luck_ffle/app/views/point%20shop/point_shop_view.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -61,6 +61,11 @@ class GuidingWidget extends StatelessWidget {
                     );
                   } else if (navController.isLastStep.value) {
                     navController.isGuidingFinished.value = true;
+
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => const NotificationDialogue(),
+                    );
 
                     // Optionally: Do something after last step
                     // controller.changeIndex(0); // restart
@@ -774,22 +779,22 @@ class PopularItemsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('포인트샵 인기템 TOP!', style: AppTextStyles.bodytitleLarge),
+        Text('포인트샵 인기템 TOP!', style: AppTextStyles.bodytitlesmall),
         SizedBox(height: 20.h),
         const SizedBox(
-          // height: 220.h,
+          // height: 220.h,e
           child: Row(
             spacing: 10,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              PopularItemCard(
+              PopularItemCard2(
                 imageUrl: "https://picsum.photos/400/300?random=1",
                 category: '커피/음료',
                 title: '스타벅스 아이스아메리카노 Tall',
                 points: '16,000',
                 step: 3,
               ),
-              PopularItemCard(
+              PopularItemCard2(
                 imageUrl: "https://picsum.photos/400/300?random=2",
                 category: '베이커리/도넛',
                 title: '던킨 콜드(아메리카노+글레이즈드)',
@@ -800,6 +805,109 @@ class PopularItemsWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class PopularItemCard2 extends StatelessWidget {
+  final String imageUrl;
+  final String category;
+  final String title;
+  final String points;
+  final int step;
+
+  const PopularItemCard2({
+    super.key,
+    required this.imageUrl,
+    required this.category,
+    required this.title,
+    required this.points,
+    required this.step,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: GestureDetector(
+        onTap: () {
+          // Get.to(() => const ProductDetails());
+        },
+        child: SizedBox(
+          width: 130.w,
+          // margin: EdgeInsets.only(right: 15.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 120.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.r),
+                  color: Colors.grey[200],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.r),
+                  child: Image.network(
+                    imageUrl,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Colors.grey[200],
+                        child: Icon(
+                          Icons.image,
+                          color: Colors.grey[400],
+                          size: 40.sp,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 8.h),
+              Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFFfff6c9),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(3.0),
+                  child: Text(
+                    category,
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 4.h),
+              Text(
+                title,
+                style: AppTextStyles.bodyText,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              SizedBox(height: 8.h),
+              Row(
+                children: [
+                  SvgPicture.asset(AppIcons.pIcon),
+                  SizedBox(width: 4.w),
+                  Text(
+                    points,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

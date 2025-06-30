@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:luck_ffle/app/views/profile%20view/settings/term_use_screen.dart';
 import 'package:luck_ffle/app/views/profile%20view/settings/withdraw_screen.dart';
 import 'package:luck_ffle/config/app_colors.dart';
+import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
 import 'contact_us_screen.dart';
@@ -87,14 +88,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _buildCard([
             Row(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Center(child: Icon(Icons.shield)),
-                ),
+                Image.asset(AppImages.lockicon, height: 45),
                 const SizedBox(width: 10),
                 const Text('약관 및 정책', style: TextStyle(fontSize: 16)),
               ],

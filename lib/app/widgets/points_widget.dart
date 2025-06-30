@@ -34,10 +34,13 @@ class PointsWidget extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              Text('1,234', style: AppTextStyles.bodyTextSmall),
+              Text('1,234', style: AppTextStyles.bodyText),
             ],
           ),
-          const VerticalDivider(color: Color(0xFFe7eae9)),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.0),
+            child: VerticalDivider(color: Color(0xFFe7eae9)),
+          ),
 
           // Second row
           Row(
@@ -45,7 +48,7 @@ class PointsWidget extends StatelessWidget {
 
             children: [
               SvgPicture.asset(AppIcons.pIcon),
-              Text('1,234', style: AppTextStyles.bodyTextSmall),
+              Text('1,234', style: AppTextStyles.bodyText),
             ],
           ),
         ],

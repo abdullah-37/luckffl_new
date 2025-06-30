@@ -16,95 +16,97 @@ class App18BotomSheatWidget extends StatelessWidget {
       height: 600.h,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
 
-      child: Column(
-        spacing: 10,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //
-          Center(
-            child: Container(
-              height: 5,
-              width: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(1000),
-                color: const Color(0xFFcdcfd0),
+      child: SingleChildScrollView(
+        child: Column(
+          spacing: 10,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //
+            Center(
+              child: Container(
+                height: 5,
+                width: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(1000),
+                  color: const Color(0xFFcdcfd0),
+                ),
               ),
             ),
-          ),
-          //
-          Text('응모하기', style: AppTextStyles.bodytitleLarge),
-          Text('많이 응모할수록 당첨 확률이 높아져요!', style: AppTextStyles.bodytitlesmall),
-          SizedBox(height: 5.h),
-          Text('응모하기', style: AppTextStyles.bodyText),
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              spacing: 10,
-              children: [
-                _buildTicketCounter('브론즈 티켓', 3, Colors.brown),
-                _buildTicketCounter('실버 티켓', 3, Colors.grey),
-                _buildTicketCounter('골드 티켓', 3, Colors.amber),
-              ],
+            //
+            Text('응모하기', style: AppTextStyles.bodytitleLarge),
+            Text('많이 응모할수록 당첨 확률이 높아져요!', style: AppTextStyles.bodytitlesmall),
+            SizedBox(height: 5.h),
+            Text('응모하기', style: AppTextStyles.bodyText),
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                spacing: 10,
+                children: [
+                  _buildTicketCounter('브론즈 티켓', 3, Colors.brown),
+                  _buildTicketCounter('실버 티켓', 3, Colors.grey),
+                  _buildTicketCounter('골드 티켓', 3, Colors.amber),
+                ],
+              ),
             ),
-          ),
-          Text('브론즈 티켓', style: AppTextStyles.bodyText),
-          SizedBox(height: 5.h),
+            Text('브론즈 티켓', style: AppTextStyles.bodyText),
+            SizedBox(height: 5.h),
 
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFe3e5e5)),
-              borderRadius: BorderRadius.circular(1000),
-            ),
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Icon(Icons.remove),
-                Text(
-                  '1',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+              decoration: BoxDecoration(
+                border: Border.all(color: const Color(0xFFe3e5e5)),
+                borderRadius: BorderRadius.circular(1000),
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.remove),
+                  Text(
+                    '1',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                Icon(Icons.add, color: AppColors.primaryColor),
-              ],
+                  Icon(Icons.add, color: AppColors.primaryColor),
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 5.h),
+            SizedBox(height: 5.h),
 
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-            decoration: BoxDecoration(
-              color: const Color(0xFFfafafa),
-              border: Border.all(color: const Color(0xFFf2f4f5)),
-              borderRadius: BorderRadius.circular(10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              decoration: BoxDecoration(
+                color: const Color(0xFFfafafa),
+                border: Border.all(color: const Color(0xFFf2f4f5)),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('나의 응모 현황', style: AppTextStyles.bodyText),
+
+                  Text('32회', style: AppTextStyles.bodytitlesmall),
+                ],
+              ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('나의 응모 현황', style: AppTextStyles.bodyText),
-
-                Text('32회', style: AppTextStyles.bodytitlesmall),
-              ],
+            Text(
+              '• 티켓 1장당 1회 응모가 가능하며, 응모 횟수는 이벤트 종료 시 당첨 확률에 영향을 줍니다.\n• 응모 후 티켓은 환불되지 않습니다.',
+              style: AppTextStyles.bodySubtitle,
             ),
-          ),
-          Text(
-            '• 티켓 1장당 1회 응모가 가능하며, 응모 횟수는 이벤트 종료 시 당첨 확률에 영향을 줍니다.\n• 응모 후 티켓은 환불되지 않습니다.',
-            style: AppTextStyles.bodySubtitle,
-          ),
 
-          //
-          const Spacer(),
-          CustomElevatedButton(
-            onTap: () {},
-            title: '응모하기',
-            color: const Color(0xFFff2e2e),
-            textColor: Colors.white,
-          ),
-        ],
+            //
+            // const Spacer(),
+            CustomElevatedButton(
+              onTap: () {},
+              title: '응모하기',
+              color: const Color(0xFFff2e2e),
+              textColor: Colors.white,
+            ),
+          ],
+        ),
       ),
     );
   }

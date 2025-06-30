@@ -103,11 +103,15 @@ class LuckyDetailView extends StatelessWidget {
               child: Column(
                 children: [
                   _infoRow('응모기간', '25.04.21 10:00 ~ 2025.04.27 20:00'),
+                  const Divider(color: Color(0xFFf2f4f6)),
+
                   _infoRow('결과발표', '25.04.27 20:00 이후'),
+                  const Divider(color: Color(0xFFf2f4f6)),
+
                   _infoRow('당첨인원', '10명'),
-                  const Divider(),
+                  const Divider(color: Color(0xFFf2f4f6)),
                   _infoRowWithIcon('내 응모 수', '2회 / 전체 128,432회'),
-                  const Divider(),
+                  const Divider(color: Color(0xFFf2f4f6)),
                 ],
               ),
             ),
@@ -173,7 +177,10 @@ class LuckyDetailView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: AppTextStyles.bodytitlesmall),
+          Text(
+            title,
+            style: AppTextStyles.bodyText.copyWith(fontWeight: FontWeight.bold),
+          ),
           Text(value, style: AppTextStyles.bodyText),
         ],
       ),
@@ -186,7 +193,10 @@ class LuckyDetailView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: AppTextStyles.bodytitlesmall),
+          Text(
+            title,
+            style: AppTextStyles.bodyText.copyWith(fontWeight: FontWeight.bold),
+          ),
           Row(
             children: [
               SvgPicture.asset(AppImages.favourite, height: 15.h),

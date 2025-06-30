@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luck_ffle/app/views/profile%20view/settings/setting_screen.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
+import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
@@ -80,7 +82,56 @@ class App033 extends StatelessWidget {
                           ),
                         ),
                         const CustomToggel(),
-                        CustomElevatedButton(onTap: () {}, title: '종료'),
+                        CustomElevatedButton(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                backgroundColor: Colors.white,
+                                content: Column(
+                                  spacing: 20,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    //
+                                    Image.asset(
+                                      AppImages.partyingface,
+                                      height: 60,
+                                    ),
+                                    Text(
+                                      '축하해요!',
+                                      style: AppTextStyles.bodytitlesmall,
+                                    ),
+                                    Row(
+                                      spacing: 10,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SvgPicture.asset(
+                                          AppIcons.pIcon,
+                                          height: 40,
+                                        ),
+                                        const Text(
+                                          '+ 3P',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.primaryColor,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    CustomElevatedButton(
+                                      onTap: () {},
+                                      title: "확인",
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          title: '종료',
+                        ),
                       ],
                     ),
                   );

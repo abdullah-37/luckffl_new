@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_023.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -16,17 +17,31 @@ class App043 extends StatelessWidget {
         FocusManager.instance.primaryFocus!.unfocus();
       },
       child: Scaffold(
+        backgroundColor: const Color(0xFFffffff),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: CustomElevatedButton(onTap: () {}, title: "후기 등록"),
+          child: CustomElevatedButton(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => const CustomDialuge023(),
+              );
+            },
+            title: "후기 등록",
+          ),
         ),
-        appBar: AppBar(title: const Text('후기 작성'), centerTitle: true),
+        appBar: AppBar(
+          title: const Text('후기 작성'),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+        ),
         body: Padding(
           padding: Constants.horizontalPadding,
           child: SingleChildScrollView(
             child: Column(
               spacing: 20,
               children: [
+                SizedBox(height: 30.h),
                 //
                 Image.asset(AppImages.partyingface, height: 60.h),
                 Text(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_043.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -11,6 +13,7 @@ class App28 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFffffff),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Row(
@@ -18,7 +21,9 @@ class App28 extends StatelessWidget {
           children: [
             Expanded(
               child: CustomElevatedButton(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const App043());
+                },
                 title: '후기 작성',
                 color: const Color(0xFFfff6c9),
               ),
@@ -29,7 +34,18 @@ class App28 extends StatelessWidget {
           ],
         ),
       ),
-      appBar: AppBar(actions: const [Icon(Icons.close), SizedBox(width: 10)]),
+      appBar: AppBar(
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(Icons.close),
+          ),
+          const SizedBox(width: 10),
+        ],
+        automaticallyImplyLeading: false,
+      ),
       body: Padding(
         padding: Constants.horizontalPadding,
         child: Column(

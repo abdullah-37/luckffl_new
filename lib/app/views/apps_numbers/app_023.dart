@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_lucky_chance_view.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
+import 'package:luck_ffle/app/widgets/insuficient_poinst_dialogue.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -15,6 +16,8 @@ class App023 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double height = 71;
+    const double width = 71;
     return Scaffold(
       backgroundColor: const Color(0xFFffffff),
       appBar: AppBar(
@@ -72,7 +75,7 @@ class App023 extends StatelessWidget {
               children: [
                 SvgPicture.asset(AppImages.playpurple),
                 Text(
-                  ' 광고 시청 후 1일 출석 만회 가능        ',
+                  '광고 시청 후 1일 출석 만회 가능',
                   style: AppTextStyles.bodySubtitle.copyWith(fontSize: 18),
                 ),
               ],
@@ -101,8 +104,8 @@ class App023 extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            height: 60,
-                            width: 60,
+                            height: height,
+                            width: width,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.white,
@@ -120,8 +123,8 @@ class App023 extends StatelessWidget {
                           ),
                           //
                           Container(
-                            height: 60,
-                            width: 60,
+                            height: height,
+                            width: width,
                             padding: const EdgeInsets.all(10),
 
                             decoration: const BoxDecoration(
@@ -154,35 +157,138 @@ class App023 extends StatelessWidget {
                             ),
                           ),
                           //
-                          Container(
-                            height: 60,
-                            width: 60,
-                            padding: const EdgeInsets.all(10),
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  content: Column(
+                                    spacing: 20,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const SizedBox(height: 10),
+                                      //
+                                      Image.asset(
+                                        AppImages.partyingface,
+                                        height: 60,
+                                      ),
+                                      Text(
+                                        '축하해요!',
+                                        style: AppTextStyles.bodytitlesmall,
+                                      ),
+                                      Row(
+                                        spacing: 10,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SvgPicture.asset(
+                                            AppIcons.pIcon,
+                                            height: 40,
+                                          ),
+                                          const Text(
+                                            '+ 3P',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.primaryColor,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      CustomElevatedButton(
+                                        onTap: () {
+                                          Get.back();
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) => AlertDialog(
+                                              backgroundColor: Colors.white,
+                                              content: Column(
+                                                spacing: 20,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  const SizedBox(height: 10),
+                                                  //
+                                                  Image.asset(
+                                                    AppImages.advertisement,
+                                                    height: 100,
+                                                  ),
+                                                  Text(
+                                                    '광고보고 포인트 2배 받기!',
+                                                    style: AppTextStyles
+                                                        .bodytitlesmall,
+                                                  ),
 
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.primaryColor,
-                              // border: Border.all(color: AppColors.primaryColor),
-                            ),
-
-                            child: Center(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.keyboard_arrow_down,
-                                    color: Colors.white,
+                                                  Text(
+                                                    '광고를 보면 포인트를 2배로 드려요!',
+                                                    style: AppTextStyles
+                                                        .bodySubtitle,
+                                                  ),
+                                                  Row(
+                                                    spacing: 10,
+                                                    children: [
+                                                      Expanded(
+                                                        child:
+                                                            CustomElevatedButton(
+                                                              onTap: () {},
+                                                              title: "괜찮아요",
+                                                              color:
+                                                                  const Color(
+                                                                    0xFFfafafa,
+                                                                  ),
+                                                            ),
+                                                      ),
+                                                      Expanded(
+                                                        child:
+                                                            CustomElevatedButton(
+                                                              onTap: () {},
+                                                              title: "광고보기",
+                                                            ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        title: "확인",
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    '출석하기',
-                                    style: AppTextStyles.bodyText.copyWith(
-                                      color: AppColors.whiteColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10.sp,
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: height,
+                              width: width,
+                              padding: const EdgeInsets.all(10),
+
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.primaryColor,
+                                // border: Border.all(color: AppColors.primaryColor),
+                              ),
+
+                              child: Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: Colors.white,
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      '출석하기',
+                                      style: AppTextStyles.bodyText.copyWith(
+                                        color: AppColors.whiteColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -194,8 +300,8 @@ class App023 extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Container(
-                            height: 60,
-                            width: 60,
+                            height: height,
+                            width: width,
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color(0xFFfafafa),
@@ -212,8 +318,8 @@ class App023 extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            height: 60,
-                            width: 60,
+                            height: height,
+                            width: width,
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color(0xFFfafafa),
@@ -241,8 +347,8 @@ class App023 extends StatelessWidget {
                               SizedBox(height: 20.h),
 
                               Container(
-                                height: 60,
-                                width: 60,
+                                height: height,
+                                width: width,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color(0xFFfafafa),
@@ -274,8 +380,8 @@ class App023 extends StatelessWidget {
                                       );
                                     },
                                     child: Container(
-                                      height: 60,
-                                      width: 60,
+                                      height: height,
+                                      width: width,
                                       padding: const EdgeInsets.all(10),
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
@@ -382,7 +488,7 @@ class ConnectionPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.grey
+      ..color = const Color(0xFFfafafa)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 
@@ -471,6 +577,7 @@ class CustomDialuge023 extends StatelessWidget {
                 Text('+ 브론즈 티켓 3장', style: AppTextStyles.bodytitlesmall),
               ],
             ),
+            SizedBox(height: 20.h),
             // Action buttons
             Row(
               spacing: 10,
@@ -485,7 +592,16 @@ class CustomDialuge023 extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: CustomElevatedButton(onTap: () {}, title: '한번 더'),
+                  child: CustomElevatedButton(
+                    onTap: () {
+                      Get.back();
+                      showDialog(
+                        context: context,
+                        builder: (context) => const InsuficientPoinstDialogue(),
+                      );
+                    },
+                    title: '한번 더',
+                  ),
                 ),
               ],
             ),

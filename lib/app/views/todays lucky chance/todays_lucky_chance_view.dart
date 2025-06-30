@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/views/apps_numbers/app_044.dart';
+import 'package:luck_ffle/app/views/apps_numbers/app_28.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/app/widgets/running_outof_ticket_dialogue.dart';
@@ -17,6 +18,7 @@ class TodaysLuckyChanceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BottomNavController navController = Get.find<BottomNavController>();
+    const List list = [true, false, true, false, true, false];
     return Scaffold(
       backgroundColor: const Color(0xFFffffff),
       appBar: const AppbarWithPoints(backgroundColor: Color(0xFFffffff)),
@@ -79,7 +81,7 @@ class TodaysLuckyChanceView extends StatelessWidget {
             SizedBox(height: 8.h),
             Expanded(
               child: GridView.builder(
-                itemCount: 6,
+                itemCount: list.length,
                 padding: const EdgeInsets.all(8),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -87,87 +89,157 @@ class TodaysLuckyChanceView extends StatelessWidget {
                   mainAxisSpacing: 10,
                   childAspectRatio: 0.55, // Adjust to fit your content
                 ),
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const RunningOutofTicketDialogue(),
-                    );
-                  },
-                  child: Container(
-                    clipBehavior: Clip.hardEdge,
-                    decoration: const BoxDecoration(
-                      // borderRadius: BorderRadius.circular(10),
-                      // color: Colors.white,
-                      // boxShadow: const [
-                      //   BoxShadow(color: Colors.black12, blurRadius: 4),
-                      // ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Image
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            'https://picsum.photos/400/200?random=${index + 1}',
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            height: 120, // Fixed image height
-                          ),
-                        ),
+                itemBuilder: (context, index) {
+                  bool isAvailable = list[index];
+                  return GestureDetector(
+                    onTap: () {
+                      if (!isAvailable) {
+                        showDialog(
+                          context: context,
+                          builder: (context) =>
+                              const RunningOutofTicketDialogue(),
+                        );
+                      }
 
-                        // Content padding
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      if (isAvailable) {
+                        showDialog(
+                          context: context,
+                          builder: (context) => Column(
                             children: [
-                              Text('네이버페이', style: AppTextStyles.bodySubtitle),
-                              Text('네이버페이', style: AppTextStyles.bodyText),
-                              const SizedBox(height: 6),
-                              SizedBox(
-                                height: 40,
-                                width: double.infinity,
-                                child: ElevatedButton.icon(
-                                  onPressed: () {},
-
-                                  icon: SvgPicture.asset(
-                                    AppImages.favourite,
-                                    colorFilter: const ColorFilter.mode(
-                                      Color(0xFF86360c),
-                                      BlendMode.srcIn,
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.back();
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0,
+                                      vertical: 20,
                                     ),
-                                  ),
-                                  label: Text(
-                                    "3",
-                                    style: AppTextStyles.bodyText,
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      AppImages.x,
+                                      height: 20.h,
                                     ),
-
-                                    backgroundColor: const Color(0xFFfff6c9),
-
-                                    textStyle: const TextStyle(fontSize: 14),
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 6),
-                              CustomElevatedButton(
-                                onTap: () {},
-                                title: '25개 남음',
-                                color: const Color(0xFFfafafa),
+                              const Spacer(),
+                              Align(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      '띵동~ 선물 도착!',
+                                      style: AppTextStyles.bodytitleLarge
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.back();
+                                        Get.to(() => const App28());
+                                      },
+                                      child: Image.asset(
+                                        AppImages.mysterybox,
+                                        height: 300.h,
+                                      ),
+                                    ),
+                                    Text(
+                                      '띵동~ 선물 도착!',
+                                      style: AppTextStyles.bodytitleLarge
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
                               ),
+                              SizedBox(height: 100.h),
+                              const Spacer(),
                             ],
                           ),
-                        ),
-                      ],
+                        );
+                      }
+                    },
+                    child: Container(
+                      clipBehavior: Clip.hardEdge,
+                      decoration: const BoxDecoration(
+                        // borderRadius: BorderRadius.circular(10),
+                        // color: Colors.white,
+                        // boxShadow: const [
+                        //   BoxShadow(color: Colors.black12, blurRadius: 4),
+                        // ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Image
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.network(
+                                'https://picsum.photos/400/200?random=${index + 1}',
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: 120, // Fixed image height
+                              ),
+                            ),
+                          ),
+
+                          // Content padding
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '네이버페이',
+                                  style: AppTextStyles.bodySubtitle,
+                                ),
+                                Text('네이버페이', style: AppTextStyles.bodyText),
+                                const SizedBox(height: 6),
+                                SizedBox(
+                                  height: 40,
+                                  width: double.infinity,
+                                  child: ElevatedButton.icon(
+                                    onPressed: () {},
+
+                                    icon: SvgPicture.asset(
+                                      AppImages.favourite,
+                                      colorFilter: const ColorFilter.mode(
+                                        Color(0xFF86360c),
+                                        BlendMode.srcIn,
+                                      ),
+                                    ),
+                                    label: Text(
+                                      "3",
+                                      style: AppTextStyles.bodyText,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+
+                                      backgroundColor: const Color(0xFFfff6c9),
+
+                                      textStyle: const TextStyle(fontSize: 14),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                CustomElevatedButton(
+                                  onTap: () {},
+                                  title: '25개 남음',
+                                  color: const Color(0xFFfafafa),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ),
             // button

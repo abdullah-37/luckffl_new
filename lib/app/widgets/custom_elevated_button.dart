@@ -33,12 +33,14 @@ class CustomElevatedButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(isRounded ? 1000 : 10),
           ),
         ),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-            color: textColor,
+        child: FittedBox(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
           ),
         ),
       ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/views/bottom%20navigation/bottom_navigation.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -10,7 +13,9 @@ class App042 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BottomNavController navController = Get.find<BottomNavController>();
     return Scaffold(
+      backgroundColor: const Color(0xFFffffff),
       appBar: AppBar(
         title: const Text('교환 완료'),
         centerTitle: true,
@@ -68,7 +73,13 @@ class App042 extends StatelessWidget {
               style: AppTextStyles.bodySubtitle,
             ),
             const Spacer(),
-            CustomElevatedButton(onTap: () {}, title: "완료"),
+            CustomElevatedButton(
+              onTap: () {
+                navController.currentIndex.value = 3;
+                Get.offAll(() => const MainScreen());
+              },
+              title: "완료",
+            ),
             SizedBox(height: 30.h),
           ],
         ),

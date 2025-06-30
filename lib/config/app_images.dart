@@ -45,6 +45,9 @@ class AppImages {
   static const String app023tooltip = "assets/images/app023tooltip.png";
   static const String lockicon = "assets/images/lockicon.png";
   static const String bell = "assets/images/yellow plastic bell.png";
+  static const String advertisement = "assets/images/advertisement.png";
+  static const String mysterybox = "assets/images/mysterybox.png";
+  static const String x = "assets/images/x.png";
 
   static const String notibell = 'assets/icons/notibell.svg';
 }
@@ -53,6 +56,8 @@ class AppIcons {
   static const String appLogo = "assets/logos/logo.png";
   static const String buttonIcon = "assets/logos/ButtonIcon.svg";
   static const String appleIcon = "assets/logos/apple.svg";
+  static const String cross = "assets/icons/cross.svg";
+
   static const String googleIcon = "assets/logos/google.svg";
   static const String neverIcon = "assets/logos/never.svg";
   static const String phoneIcon = "assets/logos/phone.svg";

@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:luck_ffle/app/views/profile%20view/settings/term_use_screen.dart';
 import 'package:luck_ffle/app/views/profile%20view/settings/withdraw_screen.dart';
+import 'package:luck_ffle/config/app_colors.dart';
+import 'package:luck_ffle/config/app_text_styles.dart';
 
 import 'contact_us_screen.dart';
 
@@ -54,18 +55,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             const SizedBox(height: 10),
-            _buildSwitchTile('럭플 활동 알림', first, (val) {
-              setState(() {
-                first = val;
-              });
-            }),
-            _buildSwitchTile('광고/마케팅 알림', second, (val) {
-              setState(() {
-                second = val;
-              });
-            }),
+            // _buildSwitchTile('럭플 활동 알림', first, (val) {
+            //   setState(() {
+            //     first = val;
+            //   });
+            // }),
+            // _buildSwitchTile('광고/마케팅 알림', second, (val) {
+            //   setState(() {
+            //     second = val;
+            //   });
+            // }),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('럭플 활동 알림', style: AppTextStyles.bodyText),
+                const CustomToggel(),
+              ],
+            ),
+            SizedBox(height: 10.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('럭플 활동 알림', style: AppTextStyles.bodyText),
+                const CustomToggel(),
+              ],
+            ),
           ]),
-          CupertinoSwitch(value: true, onChanged: (v) {}),
+
+          // CupertinoSwitch(value: true, onChanged: (v) {}),
           const SizedBox(height: 12),
           _buildCard([
             Row(
@@ -306,6 +323,75 @@ class _SettingsScreenState extends State<SettingsScreen> {
           padding: const EdgeInsets.symmetric(vertical: 16),
         ),
         child: Text(text, style: const TextStyle(fontSize: 16)),
+      ),
+    );
+  }
+}
+
+class CustomToggel extends StatefulWidget {
+  const CustomToggel({super.key});
+
+  @override
+  State<CustomToggel> createState() => _CustomToggelState();
+}
+
+class _CustomToggelState extends State<CustomToggel> {
+  bool isenabled = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isenabled = !isenabled;
+        });
+      },
+      child: SizedBox(
+        height: 40,
+        width: 55,
+        child: Stack(
+          children: [
+            /// Animated background
+            Center(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                curve: Curves.easeInOut,
+                height: 25,
+                width: 55,
+                decoration: BoxDecoration(
+                  color: isenabled
+                      ? AppColors.primaryColor
+                      : const Color(0xFFe5e8eb),
+                  borderRadius: BorderRadius.circular(1000),
+                ),
+              ),
+            ),
+
+            /// Animated toggle knob
+            AnimatedAlign(
+              duration: const Duration(milliseconds: 250),
+              curve: Curves.easeInOut,
+              alignment: isenabled
+                  ? Alignment.centerRight
+                  : Alignment.centerLeft,
+              child: Container(
+                height: 30,
+                width: 30,
+                // margin: const EdgeInsets.symmetric(horizontal: 2), // spacing
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: isenabled
+                        ? AppColors.primaryColor
+                        : const Color(0xFFd1d6db),
+                    width: 4,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

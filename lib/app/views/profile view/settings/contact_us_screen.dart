@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'contact_us_msg_screen.dart';
+import 'package:luck_ffle/app/views/profile%20view/settings/contact_us_msg_screen.dart';
+import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
+import 'package:luck_ffle/config/app_text_styles.dart';
 
 class ContactUsScreen extends StatelessWidget {
   ContactUsScreen({super.key});
@@ -22,8 +23,8 @@ class ContactUsScreen extends StatelessWidget {
       "content":
           "1:1문의 내용 텍스트 영역입니다. 1:1문의 내용 텍스트 영역입니다. 1:1문의 내용 텍스트 영역입니다. 1:1문의 내용 텍스트 영역입니다. 1:1문의 내용 텍스트 영역입니다.",
       "images": [
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "https://picsum.photos/400/200?random=1",
+        "https://picsum.photos/400/200?random=2",
       ],
       "reply":
           "안녕하세요, 고객님\n회원님께서 문의하신 내용에 대한 답변입니다. 질문 남겨주셔서 감사합니다. 확인 부탁드립니다!",
@@ -35,6 +36,7 @@ class ContactUsScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: const Color(0xFFffffff),
         appBar: AppBar(
           leading: GestureDetector(
             onTap: () {
@@ -43,14 +45,19 @@ class ContactUsScreen extends StatelessWidget {
             child: const Icon(Icons.keyboard_arrow_left, size: 18),
           ),
           title: const Text('문의하기', style: TextStyle(color: Colors.black)),
-          backgroundColor: Colors.white,
+          backgroundColor: const Color(0xFFffffff),
           elevation: 0,
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
           bottom: const TabBar(
+            isScrollable: true,
+            tabAlignment: TabAlignment.start,
+            dividerColor: Color(0xFFfafafa),
+            indicatorColor: Colors.black,
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
-            indicatorColor: Colors.black,
+            labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            unselectedLabelStyle: TextStyle(fontSize: 16),
             tabs: [
               Tab(text: '전체문의 3'),
               Tab(text: '답변완료 2'),
@@ -61,19 +68,11 @@ class ContactUsScreen extends StatelessWidget {
         body: TabBarView(children: List.generate(3, (_) => buildInquiryList())),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: ElevatedButton.icon(
-            onPressed: () {
+          child: CustomElevatedButton(
+            onTap: () {
               Get.to(() => const ContactUsMsgScreen());
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.yellow[700],
-              foregroundColor: Colors.black,
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-            label: const Text('문의하기', style: TextStyle(fontSize: 16)),
+            title: '문의하기',
           ),
         ),
       ),
@@ -107,21 +106,24 @@ class ContactUsScreen extends StatelessWidget {
                   ),
                 ),
               const SizedBox(height: 8),
-              Text(
-                item['title'],
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
+              if (item['answered'] == false)
+                Text(
+                  item['title'],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
                 ),
-              ),
               const SizedBox(height: 4),
+
               if (item['answered'] == false)
                 Text(
                   '${item['date']} | ${item['category']}',
-                  style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  style: AppTextStyles.bodySubtitle,
                 ),
-              if (item['answered'] == false) const SizedBox(height: 8),
-              if (item['answered'] == false)
+
+              // const Divider(),
+              if (item['answered'] == true) ...[
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
@@ -133,10 +135,20 @@ class ContactUsScreen extends StatelessWidget {
                   ),
                   child: const Text('답변완료', style: TextStyle(fontSize: 10)),
                 ),
-              if (item['answered'] == false) const SizedBox(height: 8),
-              if (item['answered'] == true) ...[
                 const SizedBox(height: 12),
-                Text(item['content'], style: TextStyle(color: Colors.grey)),
+                Text(
+                  item['title'],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                Text(
+                  item['content'],
+                  style: const TextStyle(color: Colors.grey),
+                ),
                 const SizedBox(height: 12),
                 Row(
                   children: item['images']

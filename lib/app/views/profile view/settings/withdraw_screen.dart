@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
+import 'package:luck_ffle/config/app_text_styles.dart';
+import 'package:luck_ffle/config/constants.dart';
 
 class WithdrawScreen extends StatefulWidget {
   const WithdrawScreen({super.key});
@@ -26,7 +30,7 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: Constants.horizontalPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -84,32 +88,35 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                 ),
               ),
             ],
+            SizedBox(height: 10.h),
+            Text('계정을 삭제하려는 이유를 알려주세요.', style: AppTextStyles.bodySubtitle),
             const Spacer(),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xffFFD700),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                onPressed: () {
-                  // Handle withdrawal
-                },
-                child: const Text(
-                  '탈퇴하기',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
+            // Container(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10),
+            //   width: double.infinity,
+            //   height: 50,
+            //   child: ElevatedButton(
+            //     style: ElevatedButton.styleFrom(
+            //       backgroundColor: const Color(0xffFFD700),
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(8),
+            //       ),
+            //     ),
+            //     onPressed: () {
+            //       // Handle withdrawal
+            //     },
+            //     child: const Text(
+            //       '탈퇴하기',
+            //       style: TextStyle(
+            //         fontWeight: FontWeight.w600,
+            //         color: Colors.black,
+            //         fontSize: 16,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            CustomElevatedButton(onTap: () {}, title: '탈퇴하기'),
+            SizedBox(height: 30.h),
           ],
         ),
       ),

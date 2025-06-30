@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:luck_ffle/app/views/profile%20view/settings/setting_screen.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
-import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
@@ -79,11 +79,7 @@ class App033 extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Switch.adaptive(
-                          value: true,
-                          onChanged: (v) {},
-                          activeTrackColor: AppColors.primaryColor,
-                        ),
+                        const CustomToggel(),
                         CustomElevatedButton(onTap: () {}, title: '종료'),
                       ],
                     ),

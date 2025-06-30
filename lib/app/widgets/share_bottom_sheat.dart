@@ -31,7 +31,7 @@ class _ShareBottomSheetState extends State<ShareBottomSheet> {
           Center(
             child: Container(
               height: 5,
-              width: 48,
+              width: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: AppColors.checkTextColor,

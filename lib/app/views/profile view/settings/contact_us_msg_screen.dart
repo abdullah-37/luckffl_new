@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/config/app_text_styles.dart';
 
 class ContactUsMsgScreen extends StatefulWidget {
   const ContactUsMsgScreen({super.key});
@@ -53,6 +55,7 @@ class _ContactUsMsgScreenState extends State<ContactUsMsgScreen> {
               onTap: () {
                 showModalBottomSheet(
                   context: context,
+
                   backgroundColor: Colors.white,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
@@ -60,29 +63,55 @@ class _ContactUsMsgScreenState extends State<ContactUsMsgScreen> {
                     ),
                   ),
                   builder: (BuildContext context) {
-                    return ListView(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(20),
-                      children: const [
-                        Text(
-                          '문의 유형',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(height: 10.h),
+                          Container(
+                            height: 5,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF757575),
+                              borderRadius: BorderRadius.circular(1000),
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 20),
-                        Text('회원/계정', style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 12),
-                        Text('이벤트 관련', style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 12),
-                        Text('티켓/포인트', style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 12),
-                        Text('앱 오류/버그', style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 12),
-                        Text('기타', style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 20),
-                      ],
+                          ListView(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.all(20),
+                            children: [
+                              Text(
+                                '문의 유형',
+                                style: AppTextStyles.bodytitlesmall,
+                              ),
+                              const SizedBox(height: 20),
+                              const Text(
+                                '회원/계정',
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              const SizedBox(height: 12),
+                              const Text(
+                                '이벤트 관련',
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              const SizedBox(height: 12),
+                              const Text(
+                                '티켓/포인트',
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              const SizedBox(height: 12),
+                              const Text(
+                                '앱 오류/버그',
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              const SizedBox(height: 12),
+                              const Text('기타', style: TextStyle(fontSize: 15)),
+                              const SizedBox(height: 20),
+                            ],
+                          ),
+                        ],
+                      ),
                     );
                   },
                 );
@@ -101,7 +130,7 @@ class _ContactUsMsgScreenState extends State<ContactUsMsgScreen> {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('제목', style: TextStyle()),
+                Text('제목', style: TextStyle()),
                 Text(
                   '0/50',
                   style: TextStyle(color: Colors.grey, fontSize: 10),
@@ -128,7 +157,7 @@ class _ContactUsMsgScreenState extends State<ContactUsMsgScreen> {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('내용', style: TextStyle()),
+                Text('내용', style: TextStyle()),
                 Text(
                   '0/500',
                   style: TextStyle(color: Colors.grey, fontSize: 10),
@@ -208,10 +237,8 @@ class _ContactUsMsgScreenState extends State<ContactUsMsgScreen> {
                     side: const BorderSide(
                       color: Colors.grey,
                     ), // border color when unchecked
-                    fillColor: MaterialStateProperty.resolveWith<Color>((
-                      states,
-                    ) {
-                      if (states.contains(MaterialState.selected)) {
+                    fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+                      if (states.contains(WidgetState.selected)) {
                         return Colors.yellow; // when checked
                       }
                       return Colors.white; // when unchecked
@@ -234,10 +261,8 @@ class _ContactUsMsgScreenState extends State<ContactUsMsgScreen> {
                     side: const BorderSide(
                       color: Colors.grey,
                     ), // border color when unchecked
-                    fillColor: MaterialStateProperty.resolveWith<Color>((
-                      states,
-                    ) {
-                      if (states.contains(MaterialState.selected)) {
+                    fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+                      if (states.contains(WidgetState.selected)) {
                         return Colors.yellow; // when checked
                       }
                       return Colors.white; // when unchecked

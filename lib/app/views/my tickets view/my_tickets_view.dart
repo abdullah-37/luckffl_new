@@ -18,6 +18,7 @@ class MyTicketsView extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: const Color(0xFFffffff),
         appBar: AppBar(
           elevation: 0,
           leading: GestureDetector(
@@ -100,23 +101,29 @@ class MyTicketsView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  width: 80,
-                  color: const Color(0xFFfafafa),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFfafafa),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
 
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  child: Row(
-                    children: [
-                      Text('최근', style: AppTextStyles.bodyText),
-                      Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.grey[600],
-                        size: 20.sp,
-                      ),
-                    ],
+                    // width: 80,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        Text('최근', style: AppTextStyles.bodyText),
+                        Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Colors.grey[600],
+                          size: 20.sp,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -198,31 +205,6 @@ Widget _buildTicketCounter(String title, int count, Color color) {
   );
 }
 
-Widget _buildFilterTab(String title, bool isSelected) {
-  return Expanded(
-    child: Container(
-      padding: const EdgeInsets.symmetric(vertical: 15),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: isSelected ? Colors.black : Colors.transparent,
-            width: 2,
-          ),
-        ),
-      ),
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          color: isSelected ? Colors.black : Colors.grey[600],
-        ),
-      ),
-    ),
-  );
-}
-
 Widget _buildTransactionItem(
   String title,
   String date,
@@ -231,8 +213,8 @@ Widget _buildTransactionItem(
 ) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-    decoration: BoxDecoration(
-      border: Border(bottom: BorderSide(color: Colors.grey[100]!, width: 1)),
+    decoration: const BoxDecoration(
+      // border: Border(bottom: BorderSide(color: Colors.grey[100]!, width: 1)),
     ),
     child: Row(
       children: [

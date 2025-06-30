@@ -1,53 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/config/app_text_styles.dart';
+import 'package:luck_ffle/config/constants.dart';
 
 class MyProductBoxScreen extends StatelessWidget {
   const MyProductBoxScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () {
-            Get.back();
-          },
-          child: const Icon(Icons.keyboard_arrow_left, size: 18),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        backgroundColor: const Color(0xFFffffff),
+        appBar: AppBar(
+          elevation: 0,
+          leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(Icons.keyboard_arrow_left),
+          ),
+          title: Text('나의 티켓', style: AppTextStyles.bodytitlesmall),
+          centerTitle: true,
         ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-        title: const Text("나의 상품함"),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(16),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "럭플에서 당첨 및 교환한\n상품을 확인하세요!",
-                style: TextStyle(fontSize: 20),
+        body: Padding(
+          padding: Constants.horizontalPadding,
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '럭플에서 당첨 및 교환한\n상품을 확인하세요!',
+                  style: AppTextStyles.bodyTitleExtraLarge,
+                ),
               ),
-            ),
+
+              const SizedBox(height: 8),
+
+              // Filter tabs
+              TabBar(
+                isScrollable: true,
+                tabAlignment: TabAlignment.start,
+                dividerColor: Colors.transparent,
+                indicatorColor: Colors.transparent,
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                labelStyle: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+                unselectedLabelStyle: TextStyle(fontSize: 16.sp),
+                tabs: const [
+                  Tab(text: '전체'),
+                  Tab(text: '적립'),
+                  Tab(text: '사용'),
+                ],
+              ),
+
+              // Sort dropdown
+
+              // Container(height: 8.h, color: Colors.grey[100]),
+
+              // TabBarViews for each filter
+              Expanded(
+                child: TabBarView(
+                  children: List.generate(
+                    3,
+                    (_) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: buildItemsGrid(context),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 10),
-          // Tabs
-          const Row(
-            spacing: 20,
-            children: [Text('전체'), Text('적립'), Text('사용')],
-          ),
-          const SizedBox(height: 10),
-          Expanded(child: buildItemsGrid(context)),
-        ],
+        ),
       ),
     );
   }
 
   Widget buildItemsGrid(BuildContext context) {
     return GridView.count(
-      padding: const EdgeInsets.all(16),
       crossAxisCount: 2,
       mainAxisSpacing: 16,
       crossAxisSpacing: 16,
@@ -83,43 +118,50 @@ class MyProductBoxScreen extends StatelessWidget {
     required String date,
     required bool isUsed,
   }) {
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: Image.network(
-                imageUrl,
-                height: 140,
-                width: double.infinity,
-                fit: BoxFit.fill,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: Stack(
               children: [
-                Chip(
-                  label: Text(brand, style: const TextStyle(fontSize: 12)),
-                  backgroundColor: const Color(0xffFFF6C9),
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  side: BorderSide.none,
+                Image.network(
+                  imageUrl,
+                  // height: 140.h,
+                  width: double.infinity,
+                  fit: BoxFit.fill,
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                if (isUsed)
+                  Container(
+                    // height: 140.h,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.5),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        '사용완료',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(date, style: const TextStyle(fontSize: 12)),
               ],
             ),
-          ],
+          ),
         ),
+        Chip(
+          label: Text(brand, style: const TextStyle(fontSize: 12)),
+          backgroundColor: const Color(0xffFFF6C9),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          side: BorderSide.none,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+        ),
+        const SizedBox(height: 4),
+        Text(date, style: const TextStyle(fontSize: 12)),
       ],
     );
   }

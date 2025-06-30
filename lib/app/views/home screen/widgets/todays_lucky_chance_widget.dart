@@ -39,12 +39,9 @@ class TodaysLuckyChanceWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text('오늘의 행운을 뽑아보세요!', style: AppTextStyles.bodytitlesmall),
                     Text(
-                      'pick_today_luck'.tr,
-                      style: AppTextStyles.bodytitlesmall,
-                    ),
-                    Text(
-                      'challenge_with_ticketpick'.tr,
+                      '티켓픽으로 상품뽑기 도전!'.tr,
                       style: AppTextStyles.bodySubtitle,
                     ),
                   ],
@@ -68,11 +65,11 @@ class TodaysLuckyChanceWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'pick_today_luck'.tr,
+                      '룰렛을 돌리고 티켓을 GET!',
                       style: AppTextStyles.bodytitlesmall,
                     ),
                     Text(
-                      'challenge_with_ticketpick'.tr,
+                      '오늘의 행운, 룰렛을 돌려보세요!',
                       style: AppTextStyles.bodySubtitle,
                     ),
                   ],

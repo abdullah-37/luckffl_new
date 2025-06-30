@@ -39,14 +39,16 @@ class GuidingWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Spacer(),
-
+              // const Spacer(),
               if (navController.currentIndex.value == 0 &&
                   navController.isLastStep.value == false)
-                _buildFirstStep(),
-              if (navController.currentIndex.value == 1) _buildSecondStep(),
-              if (navController.currentIndex.value == 2) _buildThirdStep(),
-              if (navController.currentIndex.value == 3) _buildFourthStep(),
+                _buildFirstStep(navController, context),
+              if (navController.currentIndex.value == 1)
+                _buildSecondStep(context),
+              if (navController.currentIndex.value == 2)
+                _buildThirdStep(context),
+              if (navController.currentIndex.value == 3)
+                _buildFourthStep(context),
 
               if (navController.isLastStep.value == true) _buildLastStep(),
               const Spacer(),
@@ -81,27 +83,39 @@ class GuidingWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildFirstStep() {
+  Widget _buildFirstStep(
+    BottomNavController navController,
+    BuildContext context,
+  ) {
     return Container(
       decoration: const BoxDecoration(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height:
+                AppBar().preferredSize.height +
+                MediaQuery.of(context).padding.top,
+          ),
+          SizedBox(height: 200.h),
+
           //
           SizedBox(
+            height: 145,
             child: Stack(
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,
-                    vertical: 5,
+                    vertical: 10,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: const Color(0xFFffffff),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   child: Material(
+                    color: const Color(0xFFffffff),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -112,6 +126,7 @@ class GuidingWidget extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               AppImages.favourite,
+                              height: 20.h,
                               colorFilter: const ColorFilter.mode(
                                 Color(
                                   0xFFff5b06,
@@ -125,31 +140,17 @@ class GuidingWidget extends StatelessWidget {
                         Container(
                           width: 2.w,
                           height: 20.h,
-                          decoration: const BoxDecoration(color: Colors.grey),
+                          decoration: const BoxDecoration(
+                            color: Color(0xFFf5f6fa),
+                          ),
                         ),
                         // Second row
                         Row(
                           spacing: 10,
 
                           children: [
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: const BoxDecoration(
-                                color: Color(0xFFFFD700),
+                            SvgPicture.asset(AppIcons.pIcon, height: 30.h),
 
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'P',
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
                             Text('1,234', style: AppTextStyles.bodytitlesmall),
                           ],
                         ),
@@ -157,10 +158,15 @@ class GuidingWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                const Positioned(
+                  bottom: 5,
+                  right: 0,
+                  left: 0,
+                  child: TimelineWidget(),
+                ),
               ],
             ),
           ),
-          const TimelineWidget(),
           SizedBox(height: 20.h),
           // Text
           Padding(
@@ -199,13 +205,15 @@ class GuidingWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          //
         ],
       ),
     );
   }
 
   // Step 2
-  Widget _buildSecondStep() {
+  Widget _buildSecondStep(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Material(
@@ -213,57 +221,78 @@ class GuidingWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: 340.h,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(
-                  Constants.defaultRadius - 10,
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Styled tabs bar (copied from LuckyBoardView)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                      vertical: 0,
-                    ),
-                    child: TabBar(
-                      isScrollable: true,
-                      tabAlignment: TabAlignment.start,
-                      dividerColor: Colors.transparent,
-                      indicatorColor: Colors.transparent,
-                      labelColor: Colors.black,
-                      unselectedLabelColor: Colors.grey,
-                      labelStyle: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      unselectedLabelStyle: TextStyle(fontSize: 16.sp),
-                      tabs: const [
-                        Tab(text: '진행중'),
-                        Tab(text: '진행예정'),
-                        Tab(text: '종료'),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: TabBarView(
-                      children: [
-                        _buildProductList(tab: '진행중'),
-                        _buildProductList(tab: '진행예정'),
-                        _buildProductList(tab: '종료'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            SizedBox(
+              height:
+                  AppBar().preferredSize.height +
+                  MediaQuery.of(context).padding.top,
             ),
-            const TimelineWidget(),
+
+            Stack(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      height: 340,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(
+                          Constants.defaultRadius - 10,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Styled tabs bar (copied from LuckyBoardView)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                              vertical: 0,
+                            ),
+                            child: TabBar(
+                              isScrollable: true,
+                              tabAlignment: TabAlignment.start,
+                              dividerColor: Colors.transparent,
+                              indicatorColor: Colors.transparent,
+                              labelColor: Colors.black,
+                              unselectedLabelColor: Colors.grey,
+                              labelStyle: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              unselectedLabelStyle: TextStyle(fontSize: 16.sp),
+                              tabs: const [
+                                Tab(text: '진행중'),
+                                Tab(text: '진행예정'),
+                                Tab(text: '종료'),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: TabBarView(
+                              children: [
+                                _buildProductList(tab: '진행중'),
+                                _buildProductList(tab: '진행예정'),
+                                _buildProductList(tab: '종료'),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 100),
+                  ],
+                ),
+                const Positioned(
+                  right: 0,
+                  left: 0,
+                  bottom: 5,
+
+                  child: TimelineWidget(),
+                ),
+              ],
+            ),
             SizedBox(height: 20.h),
 
             //
@@ -272,31 +301,7 @@ class GuidingWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
                 textAlign: TextAlign.start,
-                '지금 보유 중인 티켓과 포인트예요!',
-
-                style: AppTextStyles.bodytitleLarge.copyWith(
-                  color: Colors.white,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text(
-                textAlign: TextAlign.start,
-                '지금 보유 중인 티켓과 포인트예요!',
-
-                style: AppTextStyles.bodytitleLarge.copyWith(
-                  color: Colors.white,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text(
-                textAlign: TextAlign.start,
-                '지금 보유 중인 티켓과 포인트예요!',
+                '티켓으로 응모해요!\n친구에게 공유하고, \n티켓으로 이벤트에 참여할 수 있어요.',
 
                 style: AppTextStyles.bodytitleLarge.copyWith(
                   color: Colors.white,
@@ -311,39 +316,71 @@ class GuidingWidget extends StatelessWidget {
   }
 
   ///
-  Widget _buildThirdStep() {
+  Widget _buildThirdStep(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          // height: 340.h,
-          decoration: BoxDecoration(
-            color: AppColors.scaffoldcolour,
-            borderRadius: BorderRadius.circular(Constants.defaultRadius - 10),
-          ),
-          child: Material(
-            child: Column(
-              spacing: 10,
+        SizedBox(
+          height:
+              AppBar().preferredSize.height +
+              MediaQuery.of(context).padding.top,
+        ),
+        SizedBox(height: 10.h),
+        Text('', style: AppTextStyles.bodytitleLarge),
+        // SizedBox(height: 50.h),
+        Stack(
+          children: [
+            Column(
               children: [
-                FirstComeChallengeWidget(
-                  image: AppImages.alarmclock,
-                  onTap: () {},
-                ),
-                FirstComeChallengeWidget(
-                  image: AppImages.challenge,
-                  onTap: () {},
-                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  // height: 340.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.scaffoldcolour,
+                    borderRadius: BorderRadius.circular(
+                      Constants.defaultRadius - 10,
+                    ),
+                  ),
+                  child: Material(
+                    child: Column(
+                      spacing: 10,
+                      children: [
+                        FirstComeChallengeWidget(
+                          title: '오늘도 출석 도장 꾹!',
+                          subtitle: '출석하고 포인트 챙겨가세요!',
+                          image: AppImages.threeone,
+                          onTap: () {},
+                        ),
+                        FirstComeChallengeWidget(
+                          image: AppImages.timer,
+                          onTap: () {},
+                          title: '럭플 타임 OPEN!',
+                          subtitle: '하루 4번 열리는 찬스, 포인트를 GET!',
+                        ),
 
-                FirstComeChallengeWidget(
-                  image: AppImages.handpoint,
-                  onTap: () {},
+                        FirstComeChallengeWidget(
+                          image: AppImages.leafhand,
+                          onTap: () {},
+                          title: '오늘의 행운을 뽑아보세요!',
+                          subtitle: '티켓픽으로 상품뽑기 도전!',
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
+                const SizedBox(height: 100),
               ],
             ),
-          ),
+            const Positioned(
+              right: 0,
+              left: 0,
+              bottom: 5,
+
+              child: TimelineWidget(),
+            ),
+          ],
         ),
-        const TimelineWidget(),
+        // const TimelineWidget(),
         SizedBox(height: 20.h),
 
         //
@@ -352,7 +389,7 @@ class GuidingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             textAlign: TextAlign.start,
-            '지금 보유 중인 티켓과 포인트예요!',
+            '출석만 해도 포인트 GET!.',
 
             style: AppTextStyles.bodytitleLarge.copyWith(
               color: Colors.white,
@@ -364,7 +401,7 @@ class GuidingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             textAlign: TextAlign.start,
-            '지금 보유 중인 티켓과 포인트예요!',
+            '매일 참여 가능한 다양한 미션으로',
 
             style: AppTextStyles.bodytitleLarge.copyWith(
               color: Colors.white,
@@ -376,7 +413,7 @@ class GuidingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             textAlign: TextAlign.start,
-            '지금 보유 중인 티켓과 포인트예요!',
+            '포인트와 티켓을 모아보세요',
 
             style: AppTextStyles.bodytitleLarge.copyWith(
               color: Colors.white,
@@ -389,20 +426,44 @@ class GuidingWidget extends StatelessWidget {
   }
 
   //
-  Widget _buildFourthStep() {
+  Widget _buildFourthStep(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          // height: 340.h,
-          decoration: BoxDecoration(
-            color: AppColors.scaffoldcolour,
-            borderRadius: BorderRadius.circular(Constants.defaultRadius - 10),
-          ),
-          child: const Material(child: PopularItemsWidget()),
+        SizedBox(
+          height:
+              AppBar().preferredSize.height +
+              MediaQuery.of(context).padding.top,
         ),
-        const TimelineWidget(),
+        Stack(
+          children: [
+            Column(
+              children: [
+                SizedBox(height: 100.h),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  // height: 340.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.scaffoldcolour,
+                    borderRadius: BorderRadius.circular(
+                      Constants.defaultRadius - 10,
+                    ),
+                  ),
+                  child: const Material(child: PopularItemsWidget()),
+                ),
+                const SizedBox(height: 100),
+              ],
+            ),
+            const Positioned(
+              right: 0,
+              left: 0,
+              bottom: 5,
+
+              child: TimelineWidget(),
+            ),
+          ],
+        ),
+        // const TimelineWidget(),
         SizedBox(height: 20.h),
 
         //
@@ -411,7 +472,7 @@ class GuidingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             textAlign: TextAlign.start,
-            '지금 보유 중인 티켓과 포인트예요!',
+            '포인트로 교환해요!',
 
             style: AppTextStyles.bodytitleLarge.copyWith(
               color: Colors.white,
@@ -423,7 +484,7 @@ class GuidingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             textAlign: TextAlign.start,
-            '지금 보유 중인 티켓과 포인트예요!',
+            '모은 포인트로 원하는 ',
 
             style: AppTextStyles.bodytitleLarge.copyWith(
               color: Colors.white,
@@ -435,7 +496,7 @@ class GuidingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             textAlign: TextAlign.start,
-            '지금 보유 중인 티켓과 포인트예요!',
+            '상품을 바로 받을 수 있어요.',
 
             style: AppTextStyles.bodytitleLarge.copyWith(
               color: Colors.white,
@@ -448,41 +509,45 @@ class GuidingWidget extends StatelessWidget {
   }
 
   Widget _buildLastStep() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        //image
-        Image.asset(AppImages.finishguiding, height: 200.h),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 200.h),
+          Image.asset(AppImages.finishguiding, height: 200.h),
 
-        // Text description
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: Text(
-            textAlign: TextAlign.start,
-            '준비 완료!',
+          // Text description
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Text(
+              textAlign: TextAlign.start,
+              '준비 완료!',
 
-            style: AppTextStyles.bodytitleLarge.copyWith(
-              color: Colors.white,
-              fontSize: 25,
-              decoration: TextDecoration.none,
+              style: AppTextStyles.bodytitleLarge.copyWith(
+                color: Colors.white,
+                fontSize: 25,
+                decoration: TextDecoration.none,
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 20.h),
+          SizedBox(height: 20.h),
 
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
-          child: Text(
-            textAlign: TextAlign.center,
-            '이제 본격적으로 즐겨볼까요?티켓 받고, 응모하고, 보상까지 놓치지 마세요 🎁',
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: Text(
+              textAlign: TextAlign.center,
+              '이제 본격적으로 즐겨볼까요?티켓 받고, 응모하고, 보상까지 놓치지 마세요 🎁',
 
-            style: AppTextStyles.bodytitleLarge.copyWith(
-              color: Colors.white,
-              decoration: TextDecoration.none,
+              style: AppTextStyles.bodytitleLarge.copyWith(
+                color: Colors.white,
+                decoration: TextDecoration.none,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -711,9 +776,10 @@ class PopularItemsWidget extends StatelessWidget {
       children: [
         Text('포인트샵 인기템 TOP!', style: AppTextStyles.bodytitleLarge),
         SizedBox(height: 20.h),
-        SizedBox(
-          height: 220.h,
-          child: const Row(
+        const SizedBox(
+          // height: 220.h,
+          child: Row(
+            spacing: 10,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               PopularItemCard(
@@ -766,7 +832,7 @@ class TimelineWidget extends StatelessWidget {
               width: circleSize,
               height: circleSize,
               decoration: const BoxDecoration(
-                color: AppColors.primaryColor,
+                color: Color(0xFFf6b04e),
                 shape: BoxShape.circle,
               ),
             ),
@@ -777,7 +843,7 @@ class TimelineWidget extends StatelessWidget {
                   height -
                   150 -
                   circleSize, // Adjust height to account for padding and circle
-              color: AppColors.primaryColor,
+              color: const Color(0xFFf6b04e),
             ),
           ],
         ),

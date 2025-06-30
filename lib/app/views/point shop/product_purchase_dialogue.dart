@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/point%20shop/app_042.dart';
+import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -22,15 +20,15 @@ class _ProductPurchaseDialogueState extends State<ProductPurchaseDialogue> {
       backgroundColor: AppColors.whiteColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         height: 282,
-        width: 280,
 
         child: Column(
+          spacing: 10,
           children: [
             SvgPicture.asset(AppIcons.pIcon, height: 60),
             Text('교환을 진행할까요?', style: AppTextStyles.dialogueTitleText),
-            SizedBox(height: 15.h),
+            // SizedBox(height: 15.h),
             RichText(
               text: TextSpan(
                 children: [
@@ -43,7 +41,6 @@ class _ProductPurchaseDialogueState extends State<ProductPurchaseDialogue> {
                 ],
               ),
             ),
-            SizedBox(height: 8.h),
             RichText(
               text: TextSpan(
                 children: [
@@ -56,55 +53,23 @@ class _ProductPurchaseDialogueState extends State<ProductPurchaseDialogue> {
                 ],
               ),
             ),
-            SizedBox(height: 45.h),
+            const Spacer(),
             Row(
+              spacing: 10,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
-                  width: 120.w,
-                  height: 40.h,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: const WidgetStatePropertyAll(
-                        AppColors.purchaseButtonColor,
-                      ),
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                    child: const Text(
-                      '아니요',
-                      style: TextStyle(
-                        color: AppColors.purchaseTextColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                Expanded(
+                  child: CustomElevatedButton(
+                    onTap: () {},
+                    title: '아니요',
+                    color: const Color(0xFFf4f4f5),
                   ),
                 ),
-                SizedBox(
-                  width: 120.w,
-                  height: 40.h,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.back();
-                      Get.to(() => const App042());
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: const WidgetStatePropertyAll(
-                        AppColors.buttonColor,
-                      ),
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                    child: Text('네', style: AppTextStyles.buttonText),
+                Expanded(
+                  child: CustomElevatedButton(
+                    onTap: () {},
+                    title: '네',
+                    color: const Color(0xFFffd700),
                   ),
                 ),
               ],

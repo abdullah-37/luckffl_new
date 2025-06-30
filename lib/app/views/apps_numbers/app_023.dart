@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_lucky_chance_view.dart';
-import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
+import 'package:luck_ffle/app/widgets/points_widget.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -16,7 +16,24 @@ class App023 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWithPoints(),
+      backgroundColor: const Color(0xFFffffff),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFffffff),
+
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: const Icon(Icons.keyboard_arrow_left),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
+            child: PointsWidget(),
+          ),
+          // SizedBox(width: 10.w),
+        ],
+      ),
       body: Padding(
         padding: Constants.horizontalPadding,
         child: Column(
@@ -76,7 +93,6 @@ class App023 extends StatelessWidget {
                     painter: ConnectionPainter(),
                   ),
 
-                  // 2) your three rows of circles on top
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -106,6 +122,7 @@ class App023 extends StatelessWidget {
                           Container(
                             height: 60,
                             width: 60,
+                            padding: const EdgeInsets.all(10),
 
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
@@ -113,6 +130,8 @@ class App023 extends StatelessWidget {
                             ),
                             child: Center(
                               child: Column(
+                                spacing: 5,
+                                mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SvgPicture.asset(
@@ -127,6 +146,7 @@ class App023 extends StatelessWidget {
                                     style: AppTextStyles.bodyText.copyWith(
                                       color: AppColors.whiteColor,
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 10.sp,
                                     ),
                                   ),
                                 ],
@@ -137,6 +157,8 @@ class App023 extends StatelessWidget {
                           Container(
                             height: 60,
                             width: 60,
+                            padding: const EdgeInsets.all(10),
+
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.primaryColor,
@@ -157,6 +179,7 @@ class App023 extends StatelessWidget {
                                     style: AppTextStyles.bodyText.copyWith(
                                       color: AppColors.whiteColor,
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 10.sp,
                                     ),
                                   ),
                                 ],
@@ -213,60 +236,89 @@ class App023 extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                            height: 60,
-                            width: 60,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color(0xFFfafafa),
-                              // border: Border.all(color: AppColors.primaryColor),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '6일차 \n 10P',
-                                style: AppTextStyles.bodyText.copyWith(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
+                          Column(
+                            children: [
+                              SizedBox(height: 20.h),
+
+                              Container(
+                                height: 60,
+                                width: 60,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFFfafafa),
+                                  // border: Border.all(color: AppColors.primaryColor),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '6일차 \n 10P',
+                                    style: AppTextStyles.bodyText.copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => const CustomDialuge023(),
-                              );
-                            },
-                            child: Container(
-                              height: 60,
-                              width: 60,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFFfafafa),
-                                // border: Border.all(color: AppColors.primaryColor),
+                          Stack(
+                            children: [
+                              Column(
+                                children: [
+                                  SizedBox(height: 20.h),
+                                  GestureDetector(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            const CustomDialuge023(),
+                                      );
+                                    },
+                                    child: Container(
+                                      height: 60,
+                                      width: 60,
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xFFfafafa),
+                                        // border: Border.all(color: AppColors.primaryColor),
+                                      ),
+                                      child: Center(
+                                        child: Column(
+                                          children: [
+                                            SvgPicture.asset(
+                                              AppImages.ticket,
+
+                                              colorFilter:
+                                                  const ColorFilter.mode(
+                                                    Color(0xFFff5b06),
+                                                    BlendMode.srcIn,
+                                                  ),
+                                            ),
+                                            Text(
+                                              '7일차',
+                                              style: AppTextStyles.bodyText
+                                                  .copyWith(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              child: Center(
-                                child: Column(
-                                  children: [
-                                    SvgPicture.asset(
-                                      AppImages.ticket,
-                                      colorFilter: const ColorFilter.mode(
-                                        Color(0xFFff5b06),
-                                        BlendMode.srcIn,
-                                      ),
-                                    ),
-                                    Text(
-                                      '7일차',
-                                      style: AppTextStyles.bodyText.copyWith(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                top: 0,
+                                child: Image.asset(
+                                  AppImages.app023tooltip,
+                                  height: 40.h,
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),

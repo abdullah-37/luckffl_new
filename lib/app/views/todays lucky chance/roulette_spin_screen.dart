@@ -113,7 +113,8 @@ class _SpinningWheelState extends State<RouletteSpinScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWithPoints(),
+      backgroundColor: const Color(0xFFffffff),
+      appBar: const AppbarWithPoints(backgroundColor: Color(0xFFffffff)),
 
       body: Padding(
         padding: Constants.horizontalPadding,
@@ -234,8 +235,24 @@ class _SpinningWheelState extends State<RouletteSpinScreen>
                 ),
               ],
             ),
-            const SizedBox(height: 40),
             const Spacer(),
+
+            // text
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                '유의사항',
+                style: AppTextStyles.bodySubtitle.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            const Text(
+              '• 룰렛은 1회 이용 시 100포인트가 차감됩니다.  포인트는 사용 즉시 소진되며 환불이 불가능합니다.\n• 보상은 즉시 ‘나의 티켓’ 또는 ‘포인트 내역’에 반영됩니다.  반영되지 않을 경우, 앱을 재실행하거나 고객센터로 문의해주세요.\n• 비정상적인 포인트 사용이나 자동화 시도가 감지될 경우  이용이 제한될 수 있으며, 보상 회수 또는 계정 이용 제한이 적용될 수 있습니다.\n• 본 룰렛 이벤트는 내부 사정에 따라 사전 공지 없이 변경 또는 종료될 수 있습니다.',
+            ),
+            SizedBox(height: 30.h),
+
             CustomElevatedButton(
               onTap: () {
                 _spinWheel();

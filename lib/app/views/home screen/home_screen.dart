@@ -52,10 +52,10 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 10,
-                  vertical: 5,
+                  vertical: 10,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: const Color(0xFFffffff),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Row(
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       width: 2.w,
                       height: 20.h,
-                      decoration: const BoxDecoration(color: Colors.grey),
+                      decoration: const BoxDecoration(color: Color(0xFFf5f6fa)),
                     ),
                     // Second row
                     GestureDetector(
@@ -98,24 +98,8 @@ class HomeScreen extends StatelessWidget {
                         spacing: 10,
 
                         children: [
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFFFD700),
+                          SvgPicture.asset(AppIcons.pIcon),
 
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'P',
-                                style: TextStyle(
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
                           Text('1,234', style: AppTextStyles.bodytitlesmall),
                         ],
                       ),
@@ -150,6 +134,8 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Get.to(() => const App036());
                 },
+                title: '선착순 미션, 지금 바로 도전!',
+                subtitle: '한정 포인트, 마감 되기 전에!',
               ),
             ),
             SizedBox(height: 20.h),

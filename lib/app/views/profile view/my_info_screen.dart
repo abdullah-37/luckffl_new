@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:luck_ffle/app/views/profile%20view/update_nickname_screen.dart';
+import 'package:luck_ffle/config/app_images.dart';
 
 class MyInfoScreen extends StatelessWidget {
   const MyInfoScreen({super.key});
@@ -8,6 +10,7 @@ class MyInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFfafafa),
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {
@@ -33,20 +36,20 @@ class MyInfoScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
+            spacing: 10,
+            mainAxisSize: MainAxisSize.min,
             children: [
               // Section Header
-              const ListTile(
-                leading: Icon(Icons.shield, color: Colors.grey),
-                title: Text(
+              ListTile(
+                leading: Image.asset(AppImages.lockicon, height: 40.h),
+                title: const Text(
                   "내 정보",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              const Divider(),
 
               // Name
               _buildInfoRow(() {}, "이름", "홍길동"),
-              const Divider(),
 
               // Nickname
               _buildInfoRow(
@@ -57,15 +60,12 @@ class MyInfoScreen extends StatelessWidget {
                 "@1234567",
                 showArrow: true,
               ),
-              const Divider(),
 
               // 가입 수단
               _buildInfoRow(() {}, "가입 수단", "네이버 가입"),
-              const Divider(),
 
               // Email
               _buildInfoRow(() {}, "이메일", "qwer12@naver.com"),
-              const Divider(),
 
               // Phone number
               _buildInfoRow(() {}, "휴대폰 번호", "010-1234-1234", showArrow: true),
@@ -93,7 +93,7 @@ class MyInfoScreen extends StatelessWidget {
               value,
               style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            if (showArrow) const Icon(Icons.chevron_right, color: Colors.grey),
+            if (showArrow) const Icon(Icons.chevron_right, color: Colors.black),
           ],
         ),
       ),

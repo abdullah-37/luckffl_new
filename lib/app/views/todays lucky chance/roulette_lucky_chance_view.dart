@@ -14,6 +14,7 @@ class RouletteLuckyChanceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFffffff),
       appBar: const AppbarWithPoints(),
 
       body: Padding(

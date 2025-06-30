@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/config/constants.dart';
 
 class FAQScreen extends StatelessWidget {
   final List<Map<String, String>> faqs = [
@@ -15,6 +17,8 @@ class FAQScreen extends StatelessWidget {
   ];
 
   final List<String> tabs = ["전체", "티켓/포인트", "이벤트", "계정관리", "기타"];
+
+  FAQScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,27 +38,20 @@ class FAQScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
+        body: Padding(
+          padding: Constants.horizontalPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              const Text(
                 "궁금한 사항이 있으신가요?",
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: TextField(
+              TextField(
                 decoration: InputDecoration(
                   hintText: "검색어를 입력해 주세요",
-                  hintStyle: TextStyle(fontSize: 12),
-                  prefixIcon: const Icon(Icons.search),
+                  hintStyle: const TextStyle(fontSize: 12),
                   filled: true,
                   fillColor: const Color(0xFFF7F7F7),
                   border: OutlineInputBorder(
@@ -63,70 +60,85 @@ class FAQScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
 
-            TabBar(
-              isScrollable: true,
-              labelColor: Colors.black,
-              indicatorColor: Colors.amber,
-              tabs: tabs.map((t) => Tab(text: t)).toList(),
-            ),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.all(12),
-                itemCount: faqs.length,
-                itemBuilder: (context, index) {
-                  final faq = faqs[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0, top: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 4,
-                            horizontal: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.amber.shade100,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Text(
-                            faq["tag"] ?? "",
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          faq["question"] ?? "",
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        if (faq["subtitle"] != null)
-                          Padding(
-                            padding: const EdgeInsets.only(top: 4.0),
-                            child: Text(
-                              faq["subtitle"]!,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey[700],
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  );
-                },
+              TabBar(
+                isScrollable: true,
+                tabAlignment: TabAlignment.start,
+                dividerColor: const Color(0xFFeeeeef),
+                indicatorColor: Colors.black,
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                labelStyle: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+                unselectedLabelStyle: TextStyle(fontSize: 16.sp),
+                tabs: tabs.map((t) => Tab(text: t)).toList(),
               ),
-            ),
-          ],
+
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    _buildDetailslist(),
+                    _buildDetailslist(),
+                    _buildDetailslist(),
+                    _buildDetailslist(),
+                    _buildDetailslist(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  Widget _buildDetailslist() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(12),
+      itemCount: faqs.length,
+      itemBuilder: (context, index) {
+        final faq = faqs[index];
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0, top: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                decoration: BoxDecoration(
+                  color: Colors.amber.shade100,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  faq["tag"] ?? "",
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                faq["question"] ?? "",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              if (faq["subtitle"] != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: Text(
+                    faq["subtitle"]!,
+                    style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                  ),
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

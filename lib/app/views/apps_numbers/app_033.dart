@@ -13,7 +13,8 @@ class App033 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: Padding(
+      backgroundColor: const Color(0xFFffffff),
+      // bottomNavigationBar: Padding(d
       //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       //   child: CustomElevatedButton(onTap: () {}, title: "후기 등록"),
       // ),

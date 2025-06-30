@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/route_manager.dart';
 import 'package:luck_ffle/app/views/lucky%20board/Campaigns/exposure_compain_details.dart';
-import 'package:luck_ffle/app/widgets/points_widget.dart';
+import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
@@ -16,19 +16,7 @@ class LuckyBoardView extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '럭플보드',
-            style: AppTextStyles.bodytitleLarge.copyWith(fontSize: 30),
-          ),
-          actions: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-              child: PointsWidget(),
-            ),
-            SizedBox(width: 10.w),
-          ],
-        ),
+        appBar: const AppbarWithPoints(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(

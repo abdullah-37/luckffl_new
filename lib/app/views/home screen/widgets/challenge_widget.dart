@@ -6,10 +6,15 @@ import 'package:luck_ffle/config/constants.dart';
 class FirstComeChallengeWidget extends StatelessWidget {
   final String image;
   final GestureTapCallback onTap;
+  final String title;
+  final String subtitle;
+
   const FirstComeChallengeWidget({
     super.key,
     required this.image,
     required this.onTap,
+    required this.title,
+    required this.subtitle,
   });
 
   @override
@@ -38,8 +43,8 @@ class FirstComeChallengeWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('오늘의 행운을 뽑아보세요!', style: AppTextStyles.bodytitlesmall),
-                    Text('티켓픽으로 상품뽑기 도전!', style: AppTextStyles.bodySubtitle),
+                    Text(title, style: AppTextStyles.bodytitlesmall),
+                    Text(subtitle, style: AppTextStyles.bodySubtitle),
                   ],
                 ),
               ],

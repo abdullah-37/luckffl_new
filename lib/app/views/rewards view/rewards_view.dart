@@ -57,40 +57,54 @@ class _RewardsViewState extends State<RewardsView> {
                     onTap: () {
                       Get.to(() => const App023());
                     },
+                    title: '오늘도 출석 도장 꾹!',
+                    subtitle: '출석하고 포인트 챙겨가세요!',
                   ),
                   FirstComeChallengeWidget(
                     image: AppImages.alarmclock,
                     onTap: () {
                       Get.to(() => const App033());
                     },
+                    title: '럭플 타임 OPEN!',
+                    subtitle: '하루 4번 열리는 찬스, 포인트를 GET!',
                   ),
                   FirstComeChallengeWidget(
                     image: AppImages.leafhand,
                     onTap: () {
                       Get.to(() => const TodaysLuckyChanceView());
                     },
+                    title: '오늘의 행운을 뽑아보세요!',
+                    subtitle: '티켓픽으로 상품뽑기 도전!',
                   ),
                   FirstComeChallengeWidget(
                     image: AppImages.colorwheel,
                     onTap: () {
                       Get.to(() => const RouletteLuckyChanceView());
                     },
+                    title: '룰렛을 돌리고 티켓을 GET!',
+                    subtitle: '오늘의 행운, 룰렛을 돌려보세요!',
                   ),
                   FirstComeChallengeWidget(
                     image: AppImages.handshock,
                     onTap: () {},
+                    title: '포인트 충전소',
+                    subtitle: '충전소에서 해결하세요!',
                   ),
                   FirstComeChallengeWidget(
                     image: AppImages.handpoint,
                     onTap: () {
                       Get.to(() => const App035());
                     },
+                    title: '클릭하면 적립',
+                    subtitle: '클릭하고 포인트 적립하기!',
                   ),
                   FirstComeChallengeWidget(
                     image: AppImages.challenge,
                     onTap: () {
                       Get.to(() => const App036());
                     },
+                    title: '선착순 미션',
+                    subtitle: '한정 포인트, 마감되기 전에!',
                   ),
                 ],
               ),

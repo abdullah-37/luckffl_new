@@ -70,23 +70,36 @@ class _ShareBottomSheetState extends State<ShareBottomSheet> {
             ),
           ),
           SizedBox(height: 25.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SvgPicture.asset(AppIcons.talkIcon),
-              SvgPicture.asset(AppIcons.lineIcon),
-              SvgPicture.asset(AppIcons.facebookIcon),
-            ],
+          Container(
+            height: 158,
+            decoration: BoxDecoration(
+              color: AppColors.scaffoldcolour,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SvgPicture.asset(AppIcons.talkIcon),
+                    SvgPicture.asset(AppIcons.lineIcon),
+                    SvgPicture.asset(AppIcons.facebookIcon),
+                  ],
+                ),
+                SizedBox(height: 15.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SvgPicture.asset(AppIcons.xIcon, height: 40),
+                    Image.asset(AppIcons.telegramIcon, height: 48),
+                    SvgPicture.asset(AppIcons.copyLinkIcon),
+                  ],
+                ),
+              ],
+            ),
           ),
-          SizedBox(height: 12.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SvgPicture.asset(AppIcons.xIcon, height: 40),
-              Image.asset(AppIcons.telegramIcon, height: 48),
-              SvgPicture.asset(AppIcons.copyLinkIcon),
-            ],
-          ),
+
           SizedBox(height: 25.h),
           Row(
             children: [

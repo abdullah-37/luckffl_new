@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/config/app_colors.dart';
 
 import 'points_widget.dart'; // Make sure this is the correct path
 
 class AppbarWithPoints extends StatelessWidget implements PreferredSizeWidget {
-  const AppbarWithPoints({super.key});
+  final Color backgroundColor;
+  const AppbarWithPoints({
+    super.key,
+    this.backgroundColor = AppColors.scaffoldcolour,
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -13,18 +17,19 @@ class AppbarWithPoints extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      // backgroundColor: backgroundColor,
       leading: GestureDetector(
         onTap: () {
           Get.back();
         },
         child: const Icon(Icons.keyboard_arrow_left),
       ),
-      actions: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+      actions: const [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
           child: PointsWidget(),
         ),
-        SizedBox(width: 10.w),
+        // SizedBox(width: 10.w),
       ],
     );
   }

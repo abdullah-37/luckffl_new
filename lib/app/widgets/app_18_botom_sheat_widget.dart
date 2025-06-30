@@ -14,7 +14,7 @@ class App18BotomSheatWidget extends StatelessWidget {
     return Container(
       // color: AppColors.scaffoldcolour,
       height: 600.h,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
 
       child: Column(
         spacing: 10,
@@ -35,6 +35,7 @@ class App18BotomSheatWidget extends StatelessWidget {
           //
           Text('응모하기', style: AppTextStyles.bodytitleLarge),
           Text('많이 응모할수록 당첨 확률이 높아져요!', style: AppTextStyles.bodytitlesmall),
+          SizedBox(height: 5.h),
           Text('응모하기', style: AppTextStyles.bodyText),
           Container(
             padding: const EdgeInsets.all(20),
@@ -48,6 +49,8 @@ class App18BotomSheatWidget extends StatelessWidget {
             ),
           ),
           Text('브론즈 티켓', style: AppTextStyles.bodyText),
+          SizedBox(height: 5.h),
+
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             decoration: BoxDecoration(
@@ -70,6 +73,8 @@ class App18BotomSheatWidget extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 5.h),
+
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             decoration: BoxDecoration(

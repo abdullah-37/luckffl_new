@@ -55,7 +55,9 @@ class _WalkthroughState extends State<Walkthrough> {
               SizedBox(height: 15.h),
               Image.asset(AppIcons.appLogo),
               SizedBox(height: 40.h),
-              Expanded(
+
+              Flexible(
+                fit: FlexFit.loose,
                 child: PageView.builder(
                   controller: _pageController,
                   itemCount: walkthroughData.length,
@@ -116,7 +118,7 @@ class _WalkthroughState extends State<Walkthrough> {
                   ),
                 ),
               ),
-              SizedBox(height: 100.h),
+              SizedBox(height: 35.h),
               _buildKakaoButton(),
               SizedBox(height: 15.h),
               _buildOtherStartButton(),
@@ -139,9 +141,10 @@ class _WalkthroughState extends State<Walkthrough> {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SvgPicture.asset(AppIcons.buttonIcon),
-            const Spacer(),
+
             Text(
               '카카오로 시작하기',
               style: TextStyle(
@@ -150,7 +153,8 @@ class _WalkthroughState extends State<Walkthrough> {
                 color: AppColors.textColor,
               ),
             ),
-            const Spacer(flex: 2),
+
+            const SizedBox(),
           ],
         ),
       ),

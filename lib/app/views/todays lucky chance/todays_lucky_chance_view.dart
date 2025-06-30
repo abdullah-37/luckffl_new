@@ -18,7 +18,8 @@ class TodaysLuckyChanceView extends StatelessWidget {
   Widget build(BuildContext context) {
     BottomNavController navController = Get.find<BottomNavController>();
     return Scaffold(
-      appBar: const AppbarWithPoints(),
+      backgroundColor: const Color(0xFFffffff),
+      appBar: const AppbarWithPoints(backgroundColor: Color(0xFFffffff)),
       body: Padding(
         padding: Constants.horizontalPadding,
         child: Column(

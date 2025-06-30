@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
+import 'package:luck_ffle/app/widgets/points_widget.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -17,7 +17,12 @@ class _ExposureCompainDetailsState extends State<ExposureCompainDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWithPoints(),
+      backgroundColor: AppColors.whiteColor,
+      appBar: AppBar(
+        backgroundColor: AppColors.whiteColor,
+        leading: const Icon(Icons.arrow_back_ios, size: 20),
+        actions: const [PointsWidget()],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -280,9 +285,11 @@ class _ExposureCompainDetailsState extends State<ExposureCompainDetails> {
                   ),
                   SizedBox(height: 20.h),
                   Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     height: 127.h,
-                    width: 319,
+                    width: double.infinity,
+
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: AppColors.detailContainerColor,
@@ -311,9 +318,10 @@ class _ExposureCompainDetailsState extends State<ExposureCompainDetails> {
                   ),
                   SizedBox(height: 10.h),
                   Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     height: 127.h,
-                    width: 319,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: AppColors.detailContainerColor,
@@ -341,9 +349,10 @@ class _ExposureCompainDetailsState extends State<ExposureCompainDetails> {
                   ),
                   SizedBox(height: 10.h),
                   Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     height: 127.h,
-                    width: 319,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: AppColors.detailContainerColor,
@@ -850,7 +859,6 @@ class _ExposureCompainDetailsState extends State<ExposureCompainDetails> {
                 ),
               ],
             ),
-
             SizedBox(height: 20.h),
           ],
         ),

@@ -13,6 +13,7 @@ class App044 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFffffff),
       // bottomNavigationBar: Padding(
       //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       //   child: CustomElevatedButton(onTap: () {}, title: "후기 등록"),
@@ -31,7 +32,7 @@ class App044 extends StatelessWidget {
               '📢 오늘도 행운의 주인공이 탄생했어요!',
               style: AppTextStyles.bodytitlesmall,
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h),
 
             Row(
               spacing: 5,
@@ -42,11 +43,20 @@ class App044 extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: 5,
+              child: ListView.separated(
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 30),
+                padding: const EdgeInsets.all(0),
+                itemCount: 8,
                 itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  padding: const EdgeInsets.symmetric(
+                    // vertical: 20.0,
+                    horizontal: 20,
+                  ),
                   child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      // horizontal: 20,
+                    ),
                     decoration: const BoxDecoration(),
                     child: Row(
                       spacing: 20,

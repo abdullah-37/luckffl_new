@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_lucky_chance_view.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/app/widgets/insuficient_poinst_dialogue.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
@@ -585,7 +585,8 @@ class CustomDialuge023 extends StatelessWidget {
                 Expanded(
                   child: CustomElevatedButton(
                     onTap: () {
-                      Get.to(() => const RouletteLuckyChanceView());
+                      // (() => const RouletteLuckyChanceView());
+                      Get.toNamed(AppPages.rouletteLuckyChanceView);
                     },
                     title: '그만하기',
                     color: const Color(0xFFfafafa),

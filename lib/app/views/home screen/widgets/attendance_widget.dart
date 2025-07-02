@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_023.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -138,7 +138,7 @@ class _AttendanceCheckInWidgetState extends State<AttendanceCheckInWidget> {
           CustomElevatedButton(
             isRounded: true,
             onTap: () {
-              Get.to(() => const App023());
+              Get.toNamed(AppPages.app023);
             },
             title: '오늘도 출첵하기',
           ),

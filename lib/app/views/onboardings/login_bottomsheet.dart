@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/auth%20views/login_with_phone.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 
@@ -127,7 +127,7 @@ class LoginBottomsheet extends StatelessWidget {
           SizedBox(height: 15.h),
           GestureDetector(
             onTap: () {
-              Get.to(() => const PhoneScreen());
+              Get.toNamed(AppPages.phoneOtpScreen);
             },
             child: Container(
               height: 50.h,

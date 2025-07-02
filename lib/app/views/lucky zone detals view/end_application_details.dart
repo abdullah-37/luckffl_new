@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_044.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
@@ -29,7 +29,7 @@ class _EndApplicationDetailsState extends State<EndApplicationDetails> {
             Expanded(
               child: CustomElevatedButton(
                 onTap: () {
-                  Get.to(() => const App044());
+                  Get.toNamed(AppPages.app044);
                 },
                 title: '당첨 후기 보기',
                 color: const Color(0xFFfff6c9),

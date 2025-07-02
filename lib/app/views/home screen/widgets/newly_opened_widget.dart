@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/instance_manager.dart';
-import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/views/home%20screen/home_screen.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';

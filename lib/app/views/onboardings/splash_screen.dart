@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/onboardings/walkthrough.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_images.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () {
-      Get.offAll(const Walkthrough());
+      Get.offAllNamed(AppPages.walkThrough);
     });
   }
 

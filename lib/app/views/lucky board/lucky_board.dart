@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/route_manager.dart';
-import 'package:luck_ffle/app/views/lucky%20board/Campaigns/exposure_compain_details.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -97,7 +97,7 @@ class LuckyBoardView extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => const ExposureCompainDetails());
+        Get.toNamed(AppPages.exposureCompainDetails);
       },
       child: Container(
         clipBehavior: Clip.hardEdge,

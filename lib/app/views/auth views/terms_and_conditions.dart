@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/views/bottom%20navigation/bottom_navigation.dart';
-import 'package:luck_ffle/app/views/profile%20view/settings/term_use_screen.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -67,7 +67,8 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       onTap: () {
-                        Get.to(() => TermUseScreen());
+                        // (() => TermUseScreen());
+                        Get.toNamed(AppPages.termUseScreen);
                       },
                       leading: const Icon(
                         Icons.check,

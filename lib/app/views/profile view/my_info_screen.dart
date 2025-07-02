@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/profile%20view/update_nickname_screen.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_images.dart';
 
 class MyInfoScreen extends StatelessWidget {
@@ -54,7 +54,7 @@ class MyInfoScreen extends StatelessWidget {
               // Nickname
               _buildInfoRow(
                 () {
-                  Get.to(() => const NicknameChangeScreen());
+                  Get.toNamed(AppPages.updateNicknameScreen);
                 },
                 "닉네임",
                 "@1234567",

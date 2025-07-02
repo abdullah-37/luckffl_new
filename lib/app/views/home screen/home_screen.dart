@@ -2,24 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/instance_manager.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_036.dart';
+import 'package:luck_ffle/app/controllers/home_screen_controller.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/attendance_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/challenge_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/couresel_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/newly_opened_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/popular_lucky_top_widget.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/todays_lucky_chance_widget.dart';
-import 'package:luck_ffle/app/views/lucky%20zone%20detals%20view/end_application_details.dart';
-import 'package:luck_ffle/app/views/lucky%20zone%20detals%20view/in_progress_lucky_zone_details.dart';
-import 'package:luck_ffle/app/views/my%20points%20view/my_points_view.dart';
-import 'package:luck_ffle/app/views/my%20tickets%20view/my_tickets_view.dart';
-import 'package:luck_ffle/app/views/notification%20view/notifications_view.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeScreenController> {
   const HomeScreen({super.key});
 
   // List<bool> starStates = [true, false, false]; //
@@ -33,7 +30,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {
-              Get.to(() => const NotificationsView());
+              //(() => const NotificationsView());
+              Get.toNamed(AppPages.notificationsView);
             },
             child: SvgPicture.asset(AppImages.bellicon),
           ),
@@ -65,7 +63,8 @@ class HomeScreen extends StatelessWidget {
                     GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
-                        Get.to(() => const MyTicketsView());
+                        // (() => const MyTicketsView());
+                        Get.toNamed(AppPages.myTicketsView);
                       },
                       child: Row(
                         spacing: 10,
@@ -92,7 +91,8 @@ class HomeScreen extends StatelessWidget {
                       behavior: HitTestBehavior.opaque,
 
                       onTap: () {
-                        Get.to(() => const MyPointsView());
+                        //(() => const MyPointsView());
+                        Get.toNamed(AppPages.myPointsView);
                       },
                       child: Row(
                         spacing: 10,
@@ -132,7 +132,8 @@ class HomeScreen extends StatelessWidget {
               child: FirstComeChallengeWidget(
                 image: AppImages.challenge,
                 onTap: () {
-                  Get.to(() => const App036());
+                  // (() => const App036());
+                  Get.toNamed(AppPages.app036);
                 },
                 title: '선착순 미션, 지금 바로 도전!',
                 subtitle: '한정 포인트, 마감 되기 전에!',
@@ -233,8 +234,9 @@ class HomeScreen extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () {
-        if (isActive) Get.to(() => const LuckyDetailView());
-        if (!isActive) Get.to(() => const EndApplicationDetails());
+        if (isActive) Get.toNamed(AppPages.inProgressLuckyZoneDetails);
+
+        if (!isActive) Get.toNamed(AppPages.endApplicationDetails);
       },
       child: Container(
         clipBehavior: Clip.hardEdge,

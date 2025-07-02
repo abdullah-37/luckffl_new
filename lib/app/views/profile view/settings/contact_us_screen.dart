@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/profile%20view/settings/contact_us_msg_screen.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
@@ -70,7 +70,7 @@ class ContactUsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: CustomElevatedButton(
             onTap: () {
-              Get.to(() => const ContactUsMsgScreen());
+              Get.toNamed(AppPages.contactUsMsgScreen);
             },
             title: '문의하기',
           ),

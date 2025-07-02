@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/auth%20views/phone_otp_screen.dart';
+import 'package:luck_ffle/app/controllers/login_with_phone_controller.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class PhoneScreen extends StatefulWidget {
+class PhoneScreen extends GetView<LoginWithPhoneController> {
   const PhoneScreen({super.key});
 
-  @override
-  State<PhoneScreen> createState() => _PhoneScreenState();
-}
-
-class _PhoneScreenState extends State<PhoneScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +52,8 @@ class _PhoneScreenState extends State<PhoneScreen> {
             ),
             CustomElevatedButton(
               onTap: () {
-                Get.to(() => const PhoneOtpScreen());
+                // (() => const PhoneOtpScreen());
+                Get.toNamed(AppPages.phoneOtpScreen);
               },
               title: '인증번호 요청',
             ),

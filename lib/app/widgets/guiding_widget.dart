@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/views/apps_numbers/notification_dialogue.dart';
 import 'package:luck_ffle/app/views/home%20screen/home_screen.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/challenge_widget.dart';

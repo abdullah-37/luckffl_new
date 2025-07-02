@@ -4,8 +4,8 @@ import 'package:get/get_core/get_core.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
-import 'package:luck_ffle/app/views/ticket%20shop/ticket_exchange_view.dart';
+import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -89,7 +89,7 @@ class MyPointsView extends StatelessWidget {
                       Expanded(
                         child: CustomElevatedButton(
                           onTap: () {
-                            Get.to(() => const TicketExchangeView());
+                            Get.toNamed(AppPages.ticketExchangeView);
                           },
                           title: '티켓 교환',
                         ),

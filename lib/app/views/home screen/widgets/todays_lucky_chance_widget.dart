@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_lucky_chance_view.dart';
-import 'package:luck_ffle/app/views/todays%20lucky%20chance/todays_lucky_chance_view.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
@@ -28,7 +27,7 @@ class TodaysLuckyChanceWidget extends StatelessWidget {
           // row
           GestureDetector(
             onTap: () {
-              Get.to(() => const TodaysLuckyChanceView());
+              Get.toNamed(AppPages.todaysLuckyChanceView);
             },
             child: Row(
               spacing: 10,
@@ -53,7 +52,7 @@ class TodaysLuckyChanceWidget extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              Get.to(() => const RouletteLuckyChanceView());
+              Get.toNamed(AppPages.rouletteLuckyChanceView);
             },
             child: Row(
               spacing: 10,

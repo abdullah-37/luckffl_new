@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'announcement_detail_screen.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 
 class AnnouncementScreen extends StatelessWidget {
   AnnouncementScreen({super.key});
@@ -39,7 +38,7 @@ class AnnouncementScreen extends StatelessWidget {
           final item = notices[index];
           return ListTile(
             onTap: () {
-              Get.to(() => const AnnouncementDetailScreen());
+              Get.toNamed(AppPages.announcementDetailScreen);
             },
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,

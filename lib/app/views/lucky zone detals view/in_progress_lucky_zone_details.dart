@@ -9,8 +9,8 @@ import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class LuckyDetailView extends StatelessWidget {
-  const LuckyDetailView({super.key});
+class InProgressLuckyZoneDetails extends StatelessWidget {
+  const InProgressLuckyZoneDetails({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_023.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_033.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_035.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_036.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/challenge_widget.dart';
-import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_lucky_chance_view.dart';
-import 'package:luck_ffle/app/views/todays%20lucky%20chance/todays_lucky_chance_view.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -55,7 +50,7 @@ class _RewardsViewState extends State<RewardsView> {
                   FirstComeChallengeWidget(
                     image: AppImages.threeone,
                     onTap: () {
-                      Get.to(() => const App023());
+                      Get.toNamed(AppPages.app023);
                     },
                     title: '오늘도 출석 도장 꾹!',
                     subtitle: '출석하고 포인트 챙겨가세요!',
@@ -63,7 +58,7 @@ class _RewardsViewState extends State<RewardsView> {
                   FirstComeChallengeWidget(
                     image: AppImages.alarmclock,
                     onTap: () {
-                      Get.to(() => const App033());
+                      Get.toNamed(AppPages.app033);
                     },
                     title: '럭플 타임 OPEN!',
                     subtitle: '하루 4번 열리는 찬스, 포인트를 GET!',
@@ -71,7 +66,7 @@ class _RewardsViewState extends State<RewardsView> {
                   FirstComeChallengeWidget(
                     image: AppImages.leafhand,
                     onTap: () {
-                      Get.to(() => const TodaysLuckyChanceView());
+                      Get.toNamed(AppPages.todaysLuckyChanceView);
                     },
                     title: '오늘의 행운을 뽑아보세요!',
                     subtitle: '티켓픽으로 상품뽑기 도전!',
@@ -79,7 +74,7 @@ class _RewardsViewState extends State<RewardsView> {
                   FirstComeChallengeWidget(
                     image: AppImages.colorwheel,
                     onTap: () {
-                      Get.to(() => const RouletteLuckyChanceView());
+                      Get.toNamed(AppPages.rouletteLuckyChanceView);
                     },
                     title: '룰렛을 돌리고 티켓을 GET!',
                     subtitle: '오늘의 행운, 룰렛을 돌려보세요!',
@@ -93,7 +88,7 @@ class _RewardsViewState extends State<RewardsView> {
                   FirstComeChallengeWidget(
                     image: AppImages.handpoint,
                     onTap: () {
-                      Get.to(() => const App035());
+                      Get.toNamed(AppPages.app035);
                     },
                     title: '클릭하면 적립',
                     subtitle: '클릭하고 포인트 적립하기!',
@@ -101,7 +96,7 @@ class _RewardsViewState extends State<RewardsView> {
                   FirstComeChallengeWidget(
                     image: AppImages.challenge,
                     onTap: () {
-                      Get.to(() => const App036());
+                      Get.toNamed(AppPages.app036);
                     },
                     title: '선착순 미션',
                     subtitle: '한정 포인트, 마감되기 전에!',

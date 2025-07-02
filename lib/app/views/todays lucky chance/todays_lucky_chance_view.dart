@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_044.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_28.dart';
+import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/app/widgets/running_outof_ticket_dialogue.dart';
@@ -138,7 +137,8 @@ class TodaysLuckyChanceView extends StatelessWidget {
                                     GestureDetector(
                                       onTap: () {
                                         Get.back();
-                                        Get.to(() => const App28());
+                                        // Get.to(() => const App28());
+                                        Get.toNamed(AppPages.app28);
                                       },
                                       child: Image.asset(
                                         AppImages.mysterybox,
@@ -245,7 +245,8 @@ class TodaysLuckyChanceView extends StatelessWidget {
             // button
             CustomElevatedButton(
               onTap: () {
-                Get.to(() => const App044());
+                // Get.to(() => const App044());
+                Get.toNamed(AppPages.app044);
               },
               title: '당첨 후기 보기',
             ),

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/profile%20view/settings/term_use_screen.dart';
-import 'package:luck_ffle/app/views/profile%20view/settings/withdraw_screen.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
-
-import 'contact_us_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -95,7 +92,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 10),
             _buildNavItem(() {
-              Get.to(() => TermUseScreen());
+              Get.toNamed(AppPages.termUseScreen);
             }, '이용약관'),
             _buildNavItem(() {}, '개인정보처리방침'),
             _buildNavItem(() {}, '전자금융거래 이용약관'),
@@ -119,7 +116,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 10),
             _buildNavItem(() {
-              Get.to(() => ContactUsScreen());
+              Get.toNamed(AppPages.contactUsScreen);
             }, '문의하기'),
           ]),
           const SizedBox(height: 12),
@@ -250,7 +247,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              Get.to(() => const WithdrawScreen());
+              Get.toNamed(AppPages.withdrawScreen);
             },
             child: const Center(
               child: Text(

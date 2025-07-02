@@ -7,19 +7,13 @@ import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class App035 extends StatefulWidget {
+class App035 extends StatelessWidget {
   const App035({super.key});
 
   @override
-  State<App035> createState() => _App035State();
-}
-
-class _App035State extends State<App035> {
-  final PageController _pageController = PageController();
-  final PageController _controller = PageController();
-
-  @override
   Widget build(BuildContext context) {
+    final PageController pageController = PageController();
+    final PageController controller = PageController();
     return Scaffold(
       backgroundColor: const Color(0xFFffffff),
       appBar: const AppbarWithPoints(),
@@ -29,7 +23,7 @@ class _App035State extends State<App035> {
         child: Column(
           children: [
             SizedBox(height: 10.h),
-            _buildBannerSection(),
+            _buildBannerSection(pageController),
             SizedBox(height: 30.h),
 
             Column(
@@ -37,7 +31,7 @@ class _App035State extends State<App035> {
                 SizedBox(
                   height: 100.h,
                   child: PageView(
-                    controller: _controller,
+                    controller: controller,
                     children: List.generate(
                       3,
                       (index) => _buildCustomCard(index),
@@ -46,7 +40,7 @@ class _App035State extends State<App035> {
                 ),
                 SizedBox(height: 12.h),
                 SmoothPageIndicator(
-                  controller: _controller,
+                  controller: controller,
                   count: 3,
                   effect: WormEffect(
                     dotHeight: 5.h,
@@ -197,7 +191,7 @@ class _App035State extends State<App035> {
     );
   }
 
-  Widget _buildBannerSection() {
+  Widget _buildBannerSection(PageController pageController) {
     return SizedBox(
       height: 150.h,
       // margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -205,7 +199,7 @@ class _App035State extends State<App035> {
         children: [
           // PageView
           PageView(
-            controller: _pageController,
+            controller: pageController,
 
             children: [
               _buildBannerCard(
@@ -230,7 +224,7 @@ class _App035State extends State<App035> {
             right: 0,
             child: Center(
               child: SmoothPageIndicator(
-                controller: _pageController,
+                controller: pageController,
                 count: 3,
                 effect: const WormEffect(
                   dotWidth: 8,

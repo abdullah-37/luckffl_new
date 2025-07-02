@@ -2,18 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/my%20points%20view/my_points_view.dart';
-import 'package:luck_ffle/app/views/my%20tickets%20view/my_tickets_view.dart';
-import 'package:luck_ffle/app/views/profile%20view/my_info_screen.dart';
-import 'package:luck_ffle/app/views/profile%20view/settings/setting_screen.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
-
-import '../ticket shop/ticket_shop_view.dart';
-import 'announcement_screen.dart';
-import 'faq_screen.dart';
-import 'my_product_box_screen.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -40,7 +32,7 @@ class ProfileView extends StatelessWidget {
               // User Profile Section
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const MyInfoScreen());
+                  Get.toNamed(AppPages.myInfoScreen);
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 20),
@@ -91,7 +83,7 @@ class ProfileView extends StatelessWidget {
                     // Tickets Section 1
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => const MyTicketsView());
+                        Get.toNamed(AppPages.myTicketsView);
                       },
                       child: Row(
                         children: [
@@ -137,7 +129,7 @@ class ProfileView extends StatelessWidget {
                     // Points Section 2
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => const MyPointsView());
+                        Get.toNamed(AppPages.myPointsView);
                       },
                       child: Row(
                         children: [
@@ -227,19 +219,19 @@ class ProfileView extends StatelessWidget {
                 child: Column(
                   children: [
                     _buildMenuItem('티켓샵', () {
-                      Get.to(() => const TicketShopView());
+                      Get.toNamed(AppPages.ticketShopScreen);
                     }),
                     _buildMenuItem('나의 상품함', () {
-                      Get.to(() => const MyProductBoxScreen());
+                      Get.toNamed(AppPages.myProductBoxScreen);
                     }),
                     _buildMenuItem('공지사항', () {
-                      Get.to(() => AnnouncementScreen());
+                      Get.toNamed(AppPages.announcementScreen);
                     }),
                     _buildMenuItem('자주 묻는 질문', () {
-                      Get.to(() => FAQScreen());
+                      Get.toNamed(AppPages.faqScreen);
                     }),
                     _buildMenuItem('설정', () {
-                      Get.to(() => const SettingsScreen());
+                      Get.toNamed(AppPages.settingsScreen);
                     }),
                   ],
                 ),

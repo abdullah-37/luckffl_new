@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/views/home%20screen/home_screen.dart';
 import 'package:luck_ffle/app/views/lucky%20board/lucky_board.dart';
 import 'package:luck_ffle/app/views/point%20shop/point_shop_view.dart';
@@ -12,12 +12,12 @@ import 'package:luck_ffle/app/widgets/guiding_widget.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends GetView<BottomNavController> {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final BottomNavController controller = Get.find<BottomNavController>();
+    // final BottomNavController controller = Get.find<BottomNavController>();
 
     final List<Widget> screens = [
       const HomeScreen(),

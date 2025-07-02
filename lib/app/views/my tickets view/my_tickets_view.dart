@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:luck_ffle/app/views/ticket%20shop/ticket_shop_view.dart';
-import 'package:luck_ffle/app/views/ticket%20shop/ticket_upgrade_view.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -55,7 +54,7 @@ class MyTicketsView extends StatelessWidget {
                       Expanded(
                         child: CustomElevatedButton(
                           onTap: () {
-                            Get.to(() => const TicketShopView());
+                            Get.toNamed(AppPages.ticketShopScreen);
                           },
                           title: '티켓 충전',
                         ),
@@ -64,7 +63,7 @@ class MyTicketsView extends StatelessWidget {
                       Expanded(
                         child: CustomElevatedButton(
                           onTap: () {
-                            Get.to(() => const TicketUpgradeView());
+                            Get.toNamed(AppPages.ticketUpgradeView);
                           },
                           title: '티켓 업그레이드',
                         ),

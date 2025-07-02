@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/todays%20lucky%20chance/roulette_spin_screen.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -80,7 +80,7 @@ class CustomTicketContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => const RouletteSpinScreen());
+        Get.toNamed(AppPages.rouletteSpinScreen);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),

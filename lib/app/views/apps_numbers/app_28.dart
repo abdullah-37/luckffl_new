@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_043.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
@@ -22,7 +22,8 @@ class App28 extends StatelessWidget {
             Expanded(
               child: CustomElevatedButton(
                 onTap: () {
-                  Get.to(() => const App043());
+                  //(() => const App043());
+                  Get.toNamed(AppPages.app043);
                 },
                 title: '후기 작성',
                 color: const Color(0xFFfff6c9),

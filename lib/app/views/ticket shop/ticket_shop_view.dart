@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:luck_ffle/app/views/ticket%20shop/buy_tickets_view.dart';
+import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
@@ -59,16 +59,18 @@ class _TicketShopViewState extends State<TicketShopView> {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(10)
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Column(children: [
-                    _buildBulletPoint('티켓은 이벤트 응모에 사용됩니다.'),
-                    const SizedBox(height: 8),
-                    _buildBulletPoint('리워드룰이 높을수록 이벤트 참여 시 당첨의 확률이 증가합니다.'),
-                    const SizedBox(height: 8),
-                    _buildBulletPoint('구매 후 티켓은 즉시 계정에 지급됩니다.'),
-                  ],),
-                )
+                  child: Column(
+                    children: [
+                      _buildBulletPoint('티켓은 이벤트 응모에 사용됩니다.'),
+                      const SizedBox(height: 8),
+                      _buildBulletPoint('리워드룰이 높을수록 이벤트 참여 시 당첨의 확률이 증가합니다.'),
+                      const SizedBox(height: 8),
+                      _buildBulletPoint('구매 후 티켓은 즉시 계정에 지급됩니다.'),
+                    ],
+                  ),
+                ),
               ],
             ),
 
@@ -87,37 +89,40 @@ class _TicketShopViewState extends State<TicketShopView> {
                   ),
                 ),
 
-
-      DropdownButtonHideUnderline(
-      child: DropdownButton<String>(
-        value: selectedOption,
-        items: ['인기순', '가격순', '최신순']
-            .map((option) => DropdownMenuItem(
-          value: option,
-          child: Text(
-            option,
-            style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-          ),
-        ))
-            .toList(),
-        onChanged: (value) {
-          if (value != null) {
-            setState(() {
-              selectedOption = value;
-            });
-          }
-        },
-        icon: Icon(
-          Icons.keyboard_arrow_down,
-          color: Colors.grey[600],
-          size: 20,
-        ),
-        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-        dropdownColor: Colors.white,
-      ),
-    ),
-
-    ],
+                DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: selectedOption,
+                    items: ['인기순', '가격순', '최신순']
+                        .map(
+                          (option) => DropdownMenuItem(
+                            value: option,
+                            child: Text(
+                              option,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      if (value != null) {
+                        setState(() {
+                          selectedOption = value;
+                        });
+                      }
+                    },
+                    icon: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.grey[600],
+                      size: 20,
+                    ),
+                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    dropdownColor: Colors.white,
+                  ),
+                ),
+              ],
             ),
 
             // Divider
@@ -173,7 +178,7 @@ class _TicketShopViewState extends State<TicketShopView> {
             shape: BoxShape.circle,
           ),
         ),
-        Expanded(child: Text(text, style:const TextStyle(fontSize:12))),
+        Expanded(child: Text(text, style: const TextStyle(fontSize: 12))),
       ],
     );
   }
@@ -181,7 +186,7 @@ class _TicketShopViewState extends State<TicketShopView> {
   Widget _buildPackageItem(String title, String description, String imageUrl) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => const BuyTicketScreen());
+        Get.toNamed(AppPages.buyTicketsView);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0),

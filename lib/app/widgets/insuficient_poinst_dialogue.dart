@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:luck_ffle/app/controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/views/bottom%20navigation/bottom_navigation.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';

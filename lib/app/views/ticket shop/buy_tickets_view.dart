@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/state_manager.dart';
+import 'package:luck_ffle/app/Controllers/buy_tickets_view_controller.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class BuyTicketScreen extends StatefulWidget {
+class BuyTicketScreen extends GetView<BuyTicketsViewController> {
   const BuyTicketScreen({super.key});
 
-  @override
-  _TicketPurchaseScreenState createState() => _TicketPurchaseScreenState();
-}
-
-class _TicketPurchaseScreenState extends State<BuyTicketScreen> {
-  int quantity = 1;
-  String selectedPayment = '카드결제';
-  bool isAgreed = true;
-
+  // int quantity = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -245,7 +238,7 @@ class _TicketPurchaseScreenState extends State<BuyTicketScreen> {
           SizedBox(
             width: 30.w,
             child: Text(
-              quantity.toString(),
+              controller.quantity.toString(),
               textAlign: TextAlign.center,
               style: AppTextStyles.bodyText.copyWith(
                 fontWeight: FontWeight.bold,

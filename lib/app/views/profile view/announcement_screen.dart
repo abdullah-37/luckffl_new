@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/announcement_screen_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 
-class AnnouncementScreen extends StatelessWidget {
+class AnnouncementScreen extends GetView<AnnouncementScreenController> {
   AnnouncementScreen({super.key});
   final List<Map<String, String>> notices = [
     {"title": "[공지] 포인트샵 신규 상품 추가 안내", "date": "2023.07.16"},

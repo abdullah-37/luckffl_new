@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/announcement_detail_screen_controller.dart';
 
-class AnnouncementDetailScreen extends StatelessWidget {
+class AnnouncementDetailScreen
+    extends GetView<AnnouncementDetailScreenController> {
   const AnnouncementDetailScreen({super.key});
 
   @override

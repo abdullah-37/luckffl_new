@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
+import 'package:get/state_manager.dart';
+import 'package:luck_ffle/app/Controllers/sliding_product_end_status_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
@@ -9,15 +11,12 @@ import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class SlidingProductEndStatus extends StatefulWidget {
+class SlidingProductEndStatus
+    extends GetView<SlidingProductEndStatusController> {
   const SlidingProductEndStatus({super.key});
 
-  @override
-  State<SlidingProductEndStatus> createState() => _EndApplicationDetailsState();
-}
+  // bool isExpanded = false;
 
-class _EndApplicationDetailsState extends State<SlidingProductEndStatus> {
-  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -194,16 +193,19 @@ class _EndApplicationDetailsState extends State<SlidingProductEndStatus> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        isExpanded = !isExpanded;
-                      });
+                      // setState(() {
+                      //   isExpanded = !isExpanded;
+                      // });
+                      controller.toggleExpanded();
                     },
                     child: Row(
                       children: [
                         Text('안내 사항', style: AppTextStyles.dialogueTitleText),
                         SizedBox(width: 10.w),
                         Icon(
-                          isExpanded ? Icons.expand_less : Icons.expand_more,
+                          controller.isExpanded
+                              ? Icons.expand_less
+                              : Icons.expand_more,
                           color: AppColors.checkTextColor,
                         ),
                       ],
@@ -211,7 +213,7 @@ class _EndApplicationDetailsState extends State<SlidingProductEndStatus> {
                   ),
                   SizedBox(height: 30.h),
                   Container(
-                    child: isExpanded
+                    child: controller.isExpanded
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/my_info_screen_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_images.dart';
 
-class MyInfoScreen extends StatelessWidget {
+class MyInfoScreen extends GetView<MyInfoScreenController> {
   const MyInfoScreen({super.key});
 
   @override

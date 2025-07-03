@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/faq_screen_controller.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class FAQScreen extends StatelessWidget {
+class FAQScreen extends GetView<FAQScreenController> {
   final List<Map<String, String>> faqs = [
     {"tag": "티켓/포인트", "question": "출석 체크를 놓쳤는데 포인트 받을 수 있나요?"},
     {

@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
-
-import '../Controllers/app_042_controller.dart';
+import 'package:luck_ffle/app/Controllers/app_033_controller.dart';
 
 class App033Binding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<App042Controller>(() => App042Controller());
+    Get.lazyPut<App033Controller>(() => App033Controller());
   }
 }

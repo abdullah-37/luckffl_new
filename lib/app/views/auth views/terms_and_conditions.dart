@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/terms_and_conditions_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/views/bottom%20navigation/bottom_navigation.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class TermsAndConditions extends StatefulWidget {
+class TermsAndConditions extends GetView<TermsAndConditionsController> {
   const TermsAndConditions({super.key});
 
   @override
-  State<TermsAndConditions> createState() => _TermsAndConditionsState();
-}
-
-class _TermsAndConditionsState extends State<TermsAndConditions> {
-  List<Map<String, String>> conditions = [
-    {"condition": '(필수) 만 14세 이상'},
-    {"condition": '(필수) 럭플 서비스 이용약관'},
-    {"condition": '(필수) 개인정보수집 및 이용동의'},
-    {"condition": '(선택) 개인정보 마케팅 활용 동의'},
-    {"condition": '(선택) 광고성 정보 수신동의'},
-  ];
-
-  @override
   Widget build(BuildContext context) {
+    List<Map<String, String>> conditions = [
+      {"condition": '(필수) 만 14세 이상'},
+      {"condition": '(필수) 럭플 서비스 이용약관'},
+      {"condition": '(필수) 개인정보수집 및 이용동의'},
+      {"condition": '(선택) 개인정보 마케팅 활용 동의'},
+      {"condition": '(선택) 광고성 정보 수신동의'},
+    ];
     return Scaffold(
       body: SafeArea(
         child: Padding(

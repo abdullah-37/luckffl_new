@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
+import 'package:get/state_manager.dart';
+import 'package:luck_ffle/app/Controllers/notifications_view_controller.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class NotificationsView extends StatelessWidget {
+class NotificationsView extends GetView<NotificationsViewController> {
   const NotificationsView({super.key});
 
   @override

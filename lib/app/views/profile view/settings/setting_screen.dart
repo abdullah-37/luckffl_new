@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/setting_screen_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends GetView<SettingScreenController> {
   const SettingsScreen({super.key});
-
-  @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
-  bool first = true;
-  bool second = true;
 
   @override
   Widget build(BuildContext context) {

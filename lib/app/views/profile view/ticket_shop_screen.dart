@@ -1,47 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/ticket_shop_screen_controller.dart';
 
-class TicketShopScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> packages = [
-    {
-      'price': '5,000원 패키지',
-      'main': '50장',
-      'bonus': '+ 5장 (보너스)',
-      'silver': '',
-      'gold': '',
-    },
-    {
-      'price': '10,000원 패키지',
-      'main': '100장',
-      'bonus': '+ 12장 (보너스)',
-      'silver': '실버티켓 1장',
-      'gold': '',
-    },
-    {
-      'price': '30,000원 패키지',
-      'main': '300장',
-      'bonus': '+ 40장 (보너스)',
-      'silver': '실버티켓 4장',
-      'gold': '',
-    },
-    {
-      'price': '100,000원 패키지',
-      'main': '1000장',
-      'bonus': '+ 200장 (보너스)',
-      'silver': '실버티켓 12장',
-      'gold': '골드티켓 3장',
-    },
-    {
-      'price': '50,000원 패키지',
-      'main': '500장',
-      'bonus': '+ 80장 (보너스)',
-      'silver': '실버티켓 6장',
-      'gold': '',
-    },
-  ];
+class TicketShopScreen extends GetView<TicketShopScreenController> {
+  const TicketShopScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> packages = [
+      {
+        'price': '5,000원 패키지',
+        'main': '50장',
+        'bonus': '+ 5장 (보너스)',
+        'silver': '',
+        'gold': '',
+      },
+      {
+        'price': '10,000원 패키지',
+        'main': '100장',
+        'bonus': '+ 12장 (보너스)',
+        'silver': '실버티켓 1장',
+        'gold': '',
+      },
+      {
+        'price': '30,000원 패키지',
+        'main': '300장',
+        'bonus': '+ 40장 (보너스)',
+        'silver': '실버티켓 4장',
+        'gold': '',
+      },
+      {
+        'price': '100,000원 패키지',
+        'main': '1000장',
+        'bonus': '+ 200장 (보너스)',
+        'silver': '실버티켓 12장',
+        'gold': '골드티켓 3장',
+      },
+      {
+        'price': '50,000원 패키지',
+        'main': '500장',
+        'bonus': '+ 80장 (보너스)',
+        'silver': '실버티켓 6장',
+        'gold': '',
+      },
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text("티켓샵", style: TextStyle(color: Colors.black)),
@@ -132,7 +134,7 @@ class TicketShopScreen extends StatelessWidget {
                             const SizedBox(width: 6),
                             Text(
                               pkg['bonus'],
-                              style: TextStyle(color: Colors.red),
+                              style: const TextStyle(color: Colors.red),
                             ),
                             if (pkg['silver'] != '') ...[
                               const SizedBox(width: 6),

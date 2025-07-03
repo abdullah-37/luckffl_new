@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:luck_ffle/app/Controllers/app_033_controller.dart';
 import 'package:luck_ffle/app/views/profile%20view/settings/setting_screen.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
@@ -9,7 +11,7 @@ import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class App033 extends StatelessWidget {
+class App033 extends GetView<App033Controller> {
   const App033({super.key});
 
   @override

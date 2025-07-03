@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/rewards_view_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/views/home%20screen/widgets/challenge_widget.dart';
 import 'package:luck_ffle/app/widgets/points_widget.dart';
@@ -9,18 +10,13 @@ import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class RewardsView extends StatefulWidget {
+class RewardsView extends GetView<RewardsViewController> {
   const RewardsView({super.key});
 
   @override
-  State<RewardsView> createState() => _RewardsViewState();
-}
-
-class _RewardsViewState extends State<RewardsView> {
-  final PageController _pageController = PageController();
-
-  @override
   Widget build(BuildContext context) {
+    final PageController pageController = PageController();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -41,7 +37,7 @@ class _RewardsViewState extends State<RewardsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildBannerSection(),
+            _buildBannerSection(pageController),
             SizedBox(height: 10.h),
             Text('오늘의 럭키 찬스', style: AppTextStyles.bodytitleLarge),
             Expanded(
@@ -110,7 +106,7 @@ class _RewardsViewState extends State<RewardsView> {
     );
   }
 
-  Widget _buildBannerSection() {
+  Widget _buildBannerSection(PageController pageController) {
     return SizedBox(
       height: 150.h,
       // margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -118,7 +114,7 @@ class _RewardsViewState extends State<RewardsView> {
         children: [
           // PageView
           PageView(
-            controller: _pageController,
+            controller: pageController,
             onPageChanged: (index) {},
             children: [
               _buildBannerCard(
@@ -143,7 +139,7 @@ class _RewardsViewState extends State<RewardsView> {
             right: 0,
             child: Center(
               child: SmoothPageIndicator(
-                controller: _pageController,
+                controller: pageController,
                 count: 3,
                 effect: const WormEffect(
                   dotWidth: 8,

@@ -1,36 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/app_036_controller.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 // ignore: depend_on_referenced_packages
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class App036 extends StatefulWidget {
+class App036 extends GetView<App036Controller> {
   const App036({super.key});
 
   @override
-  _App036State createState() => _App036State();
-}
-
-class _App036State extends State<App036> with TickerProviderStateMixin {
-  late TabController _tabController;
-  final PageController _pageController = PageController();
-  int _currentPage = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 4, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final PageController pageController = PageController();
+
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -38,7 +20,7 @@ class _App036State extends State<App036> with TickerProviderStateMixin {
         body: Column(
           children: [
             // PageView Banner Section
-            _buildBannerSection(),
+            _buildBannerSection(pageController),
             SizedBox(height: 10.h),
 
             // Tab Section
@@ -79,7 +61,7 @@ class _App036State extends State<App036> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildBannerSection() {
+  Widget _buildBannerSection(PageController pageController) {
     return SizedBox(
       height: 150.h,
       // margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -87,12 +69,12 @@ class _App036State extends State<App036> with TickerProviderStateMixin {
         children: [
           // PageView
           PageView(
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
+            controller: pageController,
+            // onPageChanged: (index) {
+            //   setState(() {
+            //     _currentPage = index;
+            //   });
+            // },
             children: [
               _buildBannerCard(
                 '친구한테 공유하고\n하트 힐링 같이 하자 !',
@@ -116,7 +98,7 @@ class _App036State extends State<App036> with TickerProviderStateMixin {
             right: 0,
             child: Center(
               child: SmoothPageIndicator(
-                controller: _pageController,
+                controller: pageController,
                 count: 3,
                 effect: const WormEffect(
                   dotWidth: 8,
@@ -209,7 +191,7 @@ class _App036State extends State<App036> with TickerProviderStateMixin {
 
   Widget _buildContentList() {
     return TabBarView(
-      controller: _tabController,
+      // controller: _tabController,
       children: [
         _buildListContent(),
         _buildListContent(),

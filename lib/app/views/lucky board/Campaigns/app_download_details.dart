@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:luck_ffle/app/Controllers/app_download_details_controller.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class AppDownloadDetails extends StatefulWidget {
+class AppDownloadDetails extends GetView<AppDownloadDetailsController> {
   const AppDownloadDetails({super.key});
 
-  @override
-  State<AppDownloadDetails> createState() => _AppDownloadDetailsState();
-}
-
-class _AppDownloadDetailsState extends State<AppDownloadDetails> {
-  bool isExpanded = false;
+  // bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -589,9 +586,10 @@ class _AppDownloadDetailsState extends State<AppDownloadDetails> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          setState(() {
-                            isExpanded = !isExpanded;
-                          });
+                          controller.toggel();
+                          // setState(() {
+                          //   isExpanded = !isExpanded;
+                          // });
                         },
                         child: Row(
                           children: [
@@ -601,7 +599,7 @@ class _AppDownloadDetailsState extends State<AppDownloadDetails> {
                             ),
                             SizedBox(width: 10.w),
                             Icon(
-                              isExpanded
+                              controller.isExpanded
                                   ? Icons.expand_less
                                   : Icons.expand_more,
                               color: AppColors.checkTextColor,
@@ -611,7 +609,7 @@ class _AppDownloadDetailsState extends State<AppDownloadDetails> {
                       ),
                       SizedBox(height: 30.h),
                       Container(
-                        child: isExpanded
+                        child: controller.isExpanded
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

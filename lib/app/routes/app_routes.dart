@@ -9,13 +9,13 @@ import 'package:luck_ffle/app/AppBindings/app_036_binding.dart';
 import 'package:luck_ffle/app/AppBindings/app_042_binding.dart';
 import 'package:luck_ffle/app/AppBindings/app_043_binding.dart';
 import 'package:luck_ffle/app/AppBindings/app_044_binding.dart';
-import 'package:luck_ffle/app/AppBindings/app_062_binding.dart';
 import 'package:luck_ffle/app/AppBindings/app_38_binding.dart';
 import 'package:luck_ffle/app/AppBindings/app_download_details_binding.dart';
 import 'package:luck_ffle/app/AppBindings/buy_tickets_view_binding.dart';
 import 'package:luck_ffle/app/AppBindings/contact_us_msg_screen_binding.dart';
 import 'package:luck_ffle/app/AppBindings/contact_us_screen_binding.dart';
 import 'package:luck_ffle/app/AppBindings/end_application_details_binding.dart';
+import 'package:luck_ffle/app/AppBindings/end_lucky_application_details_binding.dart';
 import 'package:luck_ffle/app/AppBindings/end_non_apply_details_binding.dart';
 import 'package:luck_ffle/app/AppBindings/exposure_compain_details_binding.dart';
 import 'package:luck_ffle/app/AppBindings/faq_screen_binding.dart';
@@ -57,7 +57,6 @@ import 'package:luck_ffle/app/views/apps_numbers/app_035.dart';
 import 'package:luck_ffle/app/views/apps_numbers/app_036.dart';
 import 'package:luck_ffle/app/views/apps_numbers/app_043.dart';
 import 'package:luck_ffle/app/views/apps_numbers/app_044.dart';
-import 'package:luck_ffle/app/views/apps_numbers/app_062.dart';
 import 'package:luck_ffle/app/views/apps_numbers/app_28.dart';
 import 'package:luck_ffle/app/views/auth%20views/login_with_phone.dart';
 import 'package:luck_ffle/app/views/auth%20views/phone_otp_screen.dart';
@@ -74,6 +73,7 @@ import 'package:luck_ffle/app/views/lucky%20board/Campaigns/exposure_compain_det
 import 'package:luck_ffle/app/views/lucky%20board/Campaigns/pre_order_details.dart';
 import 'package:luck_ffle/app/views/lucky%20board/Campaigns/upcoming_campaign_details.dart';
 import 'package:luck_ffle/app/views/lucky%20board/lucky_board.dart';
+import 'package:luck_ffle/app/views/lucky%20zone%20detals%20view/end_lucky_application_details.dart';
 import 'package:luck_ffle/app/views/my%20points%20view/my_points_view.dart';
 import 'package:luck_ffle/app/views/my%20tickets%20view/my_tickets_view.dart';
 import 'package:luck_ffle/app/views/notification view/notifications_view.dart';
@@ -168,11 +168,11 @@ class AppRoutes {
       page: () => const App044(),
       binding: App044Binding(),
     ),
-    GetPage(
-      name: AppPages.app062,
-      page: () => const App062(),
-      binding: App062Binding(),
-    ),
+    // GetPage(
+    //   name: AppPages.app062,
+    //   page: () => const App062(),
+    //   binding: App062Binding(),
+    // ),
     GetPage(
       name: AppPages.loginWithPhone,
       page: () => const PhoneScreen(),
@@ -373,6 +373,11 @@ class AppRoutes {
       page: () => const ProductDetails(),
       binding: ProductDetailsBindings(),
     ),
+    GetPage(
+      name: AppPages.endLuckyApplicationDetails,
+      page: () => const EndLuckyApplicationDetails(),
+      binding: EndLuckyApplicationDetailsBinding(),
+    ),
   ];
 }
 
@@ -430,4 +435,5 @@ class AppPages {
   static const rouletteSpinScreen = '/rouletteSpinScreen';
   static const todaysLuckyChanceView = '/todaysLuckyChanceView';
   static const productDetails = '/productDetails';
+  static const endLuckyApplicationDetails = '/endLuckyApplicationDetails';
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/app_38_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class App38 extends StatelessWidget {
+class App38 extends GetView<App38Controller> {
   const App38({super.key});
 
   @override

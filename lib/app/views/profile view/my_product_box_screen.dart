@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/my_product_box_screen_controller.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class MyProductBoxScreen extends StatelessWidget {
+class MyProductBoxScreen extends GetView<MyProductBoxScreenController> {
   const MyProductBoxScreen({super.key});
 
   @override

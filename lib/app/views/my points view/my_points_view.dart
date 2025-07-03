@@ -4,14 +4,16 @@ import 'package:get/get_core/get_core.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
+import 'package:luck_ffle/app/Controllers/my_points_view_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class MyPointsView extends StatelessWidget {
+class MyPointsView extends GetView<MyPointsViewController> {
   const MyPointsView({super.key});
 
   @override

@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/update_nickname_screen_controller.dart';
 
-class NicknameChangeScreen extends StatefulWidget {
+class NicknameChangeScreen extends GetView<UpdateNicknameScreenController> {
   const NicknameChangeScreen({super.key});
 
   @override
-  State<NicknameChangeScreen> createState() => _NicknameChangeScreenState();
-}
-
-class _NicknameChangeScreenState extends State<NicknameChangeScreen> {
-  final TextEditingController _nicknameController = TextEditingController(
-    text: "후라이드",
-  );
-  String validationMessage = "사용 가능한 닉네임 입니다.";
-
-  @override
   Widget build(BuildContext context) {
+    final TextEditingController nicknameController = TextEditingController(
+      text: "후라이드",
+    );
+    String validationMessage = "사용 가능한 닉네임 입니다.";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -56,7 +51,7 @@ class _NicknameChangeScreenState extends State<NicknameChangeScreen> {
             ),
             const SizedBox(height: 8),
             TextField(
-              controller: _nicknameController,
+              controller: nicknameController,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,

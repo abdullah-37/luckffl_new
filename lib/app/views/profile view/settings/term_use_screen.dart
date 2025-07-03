@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/term_use_screen_controller.dart';
 
-class TermUseScreen extends StatelessWidget {
+class TermUseScreen extends GetView<TermUseScreenController> {
   TermUseScreen({super.key});
   final List<String> terms = [
     "제1조 (목적)\n이 약관은 **럭플(이하 “회사”)**가 제공하는 **리워드 캠페인 플랫폼 서비스(이하 “서비스”)**의 이용과 관련하여 회원의 권리, 의무, 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.",

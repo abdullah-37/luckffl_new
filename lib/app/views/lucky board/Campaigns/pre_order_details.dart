@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:luck_ffle/app/Controllers/pre_order_details_controller.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class PreOrderDetails extends StatefulWidget {
+class PreOrderDetails extends GetView<PreOrderDetailsController> {
   const PreOrderDetails({super.key});
 
-  @override
-  State<PreOrderDetails> createState() => _PreOrderDetailsState();
-}
-
-class _PreOrderDetailsState extends State<PreOrderDetails> {
-  bool isExpanded = false;
-  String selectedValue = '1';
-  bool val = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,11 +135,11 @@ class _PreOrderDetailsState extends State<PreOrderDetails> {
               children: [
                 RadioMenuButton(
                   value: '1',
-                  groupValue: selectedValue,
+                  groupValue: controller.selectedValue,
                   onChanged: (value) {
-                    setState(() {
-                      selectedValue = value!;
-                    });
+                    // setState(() {
+                    //   selectedValue = value!;
+                    // });
                   },
                   child: Row(
                     children: [
@@ -157,11 +151,12 @@ class _PreOrderDetailsState extends State<PreOrderDetails> {
                 ),
                 RadioMenuButton(
                   value: '2',
-                  groupValue: selectedValue,
+                  groupValue: controller.selectedValue,
                   onChanged: (value) {
-                    setState(() {
-                      selectedValue = value!;
-                    });
+                    // setState(() {
+                    //   selectedValue = value!;
+                    // });
+                    controller.setSelectedValue(value.toString());
                   },
                   child: SvgPicture.asset(AppIcons.androidIcon),
                 ),
@@ -235,11 +230,11 @@ class _PreOrderDetailsState extends State<PreOrderDetails> {
                     children: [
                       Checkbox(
                         activeColor: AppColors.appDownloadButtonColor,
-                        value: val,
+                        value: controller.val.value,
                         onChanged: (value) {
-                          setState(() {
-                            val = value!;
-                          });
+                          // setState(() {
+                          //   val = value!;
+                          // });
                         },
                       ),
                       Text('개인정보수집동의', style: AppTextStyles.dialogueTitleText),
@@ -774,9 +769,10 @@ class _PreOrderDetailsState extends State<PreOrderDetails> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          setState(() {
-                            isExpanded = !isExpanded;
-                          });
+                          // setState(() {
+                          //   isExpanded = !isExpanded;
+                          // });
+                          controller.toggleExpanded();
                         },
                         child: Row(
                           children: [
@@ -786,7 +782,7 @@ class _PreOrderDetailsState extends State<PreOrderDetails> {
                             ),
                             SizedBox(width: 10.w),
                             Icon(
-                              isExpanded
+                              controller.isExpanded.value
                                   ? Icons.expand_less
                                   : Icons.expand_more,
                               color: AppColors.checkTextColor,
@@ -796,7 +792,7 @@ class _PreOrderDetailsState extends State<PreOrderDetails> {
                       ),
                       SizedBox(height: 30.h),
                       Container(
-                        child: isExpanded
+                        child: controller.isExpanded.value
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

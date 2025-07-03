@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/state_manager.dart';
+import 'package:luck_ffle/app/Controllers/ticket_shop_screen_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class TicketShopView extends StatefulWidget {
+class TicketShopView extends GetView<TicketShopScreenController> {
   const TicketShopView({super.key});
 
-  @override
-  State<TicketShopView> createState() => _TicketShopViewState();
-}
-
-class _TicketShopViewState extends State<TicketShopView> {
   @override
   Widget build(BuildContext context) {
     String selectedOption = '인기순'; // Define this in your stateful widget
@@ -107,11 +103,11 @@ class _TicketShopViewState extends State<TicketShopView> {
                         )
                         .toList(),
                     onChanged: (value) {
-                      if (value != null) {
-                        setState(() {
-                          selectedOption = value;
-                        });
-                      }
+                      // if (value != null) {
+                      //   setState(() {
+                      //     selectedOption = value;
+                      //   });
+                      // }
                     },
                     icon: Icon(
                       Icons.keyboard_arrow_down,

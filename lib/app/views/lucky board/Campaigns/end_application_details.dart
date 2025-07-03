@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/end_application_details_controller.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class EndApplicationDetails extends StatefulWidget {
+class EndApplicationDetails extends GetView<EndApplicationDetailsController> {
   const EndApplicationDetails({super.key});
 
-  @override
-  State<EndApplicationDetails> createState() => _EndApplicationDetailsState();
-}
-
-class _EndApplicationDetailsState extends State<EndApplicationDetails> {
-  bool isExpanded = false;
+  // bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,16 +137,19 @@ class _EndApplicationDetailsState extends State<EndApplicationDetails> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        isExpanded = !isExpanded;
-                      });
+                      controller.toggel();
+                      // setState(() {
+                      //   isExpanded = !isExpanded;
+                      // });
                     },
                     child: Row(
                       children: [
                         Text('안내 사항', style: AppTextStyles.dialogueTitleText),
                         SizedBox(width: 10.w),
                         Icon(
-                          isExpanded ? Icons.expand_less : Icons.expand_more,
+                          controller.isExpanded
+                              ? Icons.expand_less
+                              : Icons.expand_more,
                           color: AppColors.checkTextColor,
                         ),
                       ],
@@ -157,7 +157,7 @@ class _EndApplicationDetailsState extends State<EndApplicationDetails> {
                   ),
                   SizedBox(height: 30.h),
                   Container(
-                    child: isExpanded
+                    child: controller.isExpanded
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

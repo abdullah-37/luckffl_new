@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/phone_otp_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class PhoneOtpScreen extends StatefulWidget {
+class PhoneOtpScreen extends GetView<PhoneOtpController> {
   const PhoneOtpScreen({super.key});
 
-  @override
-  State<PhoneOtpScreen> createState() => _PhoneOtpScreenState();
-}
-
-class _PhoneOtpScreenState extends State<PhoneOtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

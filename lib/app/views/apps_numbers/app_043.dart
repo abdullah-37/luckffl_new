@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/app_043_controller.dart';
 import 'package:luck_ffle/app/views/apps_numbers/app_023.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class App043 extends StatelessWidget {
+class App043 extends GetView<App043Controller> {
   const App043({super.key});
 
   @override

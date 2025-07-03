@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luck_ffle/app/Controllers/app_035_controller.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
@@ -7,7 +9,7 @@ import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class App035 extends StatelessWidget {
+class App035 extends GetView<App035Controller> {
   const App035({super.key});
 
   @override

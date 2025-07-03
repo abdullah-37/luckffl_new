@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/state_manager.dart';
+import 'package:luck_ffle/app/Controllers/my_tickets_view_controller.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class MyTicketsView extends StatelessWidget {
+class MyTicketsView extends GetView<MyTicketsViewController> {
   const MyTicketsView({super.key});
 
   @override

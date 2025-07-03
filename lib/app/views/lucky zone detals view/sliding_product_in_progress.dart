@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/state_manager.dart';
+import 'package:luck_ffle/app/Controllers/sliding_product_in_progress_controller.dart';
 import 'package:luck_ffle/app/widgets/app_18_botom_sheat_widget.dart';
 import 'package:luck_ffle/app/widgets/appbar_with_points.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
@@ -9,7 +11,8 @@ import 'package:luck_ffle/config/app_colors.dart';
 import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 
-class SlidingProductInProgress extends StatelessWidget {
+class SlidingProductInProgress
+    extends GetView<SlidingProductInProgressController> {
   const SlidingProductInProgress({super.key});
 
   @override

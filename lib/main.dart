@@ -6,7 +6,6 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:luck_ffle/app/Controllers/bottom_navigation_controller.dart';
 import 'package:luck_ffle/app/localization/app_translations.dart';
 import 'package:luck_ffle/app/routes/app_routes.dart';
-import 'package:luck_ffle/app/views/home%20screen/home_screen.dart';
 import 'package:luck_ffle/config/app_colors.dart';
 
 void main() {
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
           getPages: AppRoutes.routes,
           locale: const Locale('ko', 'KR'),
           fallbackLocale: const Locale('en', 'US'),
-          home: const HomeScreen(),
+          // home: const AppDownloadDetails(),
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: AppColors.scaffoldcolour,

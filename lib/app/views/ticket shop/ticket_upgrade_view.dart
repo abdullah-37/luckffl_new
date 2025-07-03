@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/state_manager.dart';
+import 'package:luck_ffle/app/Controllers/ticket_upgrade_view_controller.dart';
 import 'package:luck_ffle/app/widgets/custom_elevated_button.dart';
 import 'package:luck_ffle/app/widgets/ticket_exchange_dialogue.dart';
 import 'package:luck_ffle/config/app_colors.dart';
@@ -10,7 +11,7 @@ import 'package:luck_ffle/config/app_images.dart';
 import 'package:luck_ffle/config/app_text_styles.dart';
 import 'package:luck_ffle/config/constants.dart';
 
-class TicketUpgradeView extends StatelessWidget {
+class TicketUpgradeView extends GetView<TicketUpgradeViewController> {
   const TicketUpgradeView({super.key});
 
   @override

@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
           // home: const AppDownloadDetails(),
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            fontFamily: 'Pretendard',
             scaffoldBackgroundColor: AppColors.scaffoldcolour,
             appBarTheme: const AppBarTheme(
               backgroundColor: Color(0xFFffffff),
